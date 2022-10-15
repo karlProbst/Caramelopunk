@@ -13,14 +13,16 @@ var rng = RandomNumberGenerator.new()
 onready var tiles_array = [front_tile_01,front_tile_02,front_tile_03,front_tile_04,front_tile_05]
 
 func _ready():
-	pass
+	for tile in tiles_array:
+		tile.frame = rng.randi_range(0,3)
 
 func _process(delta):
 	
 	for tile in tiles_array:
 		tile.position.x -= vel
-		tile.frame = rng.randi_range(0,3)
+		
 		if tile.position.x < 0:
+			tile.frame = rng.randi_range(0,3)
 			tile.position.x = 2400
 
 func front_tile_controller():
