@@ -18,7 +18,7 @@ var weapon_bullets:=1
 var weapon_spread:=10
 var max_vel:=300
 var accel:=max_vel/3
-
+var bullet_scene = load("res://BossScene/Bullet.tscn")
 
 #------------------------------------
 var lock = false
@@ -86,6 +86,14 @@ func _process(delta):
 	if vel.y<0:
 		vel.y+=accel
 	move_and_slide(vel,Vector2.UP)
+	if position.y>get_viewport_rect().size.y:
+		position.y=get_viewport_rect().size.y
+	if position.y<0:
+		position.y=0
+	if position.x>get_viewport_rect().size.x:
+		position.x=get_viewport_rect().size.x
+	if position.x<0:
+		position.x=0
 #----------------------------------------------------
 	if !Input.is_action_pressed("ui_accept"):
 		lock=false
@@ -110,9 +118,15 @@ func hit(dano):
 		#fazer var depois
 		$ColorRect.color="ff0000"
 	
+
 	
 
 func shoot():
+	var b = bullet_scene.instance()
+
+	#constructor(position,rotation,damage,size,vel,tgroup,side):
+	b.constructor(self.position,rotation,1,4,10,"Enemy",1)
+	get_parent().add_child(b)
 	print("shoot!")
 
 func _on_Timer_timeout():

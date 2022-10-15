@@ -15,7 +15,12 @@ func _ready():
 func _process(delta):
 	rotator.rotate(rotation_rate)
 	var b = bullet_scene.instance()
-	b.position = self.position
-	b.rotation=rotator.rotation
-	b.position.x-=100
+	#constructor(position,rotation,damage,size,vel,tgroup,side):
+	b.constructor(self.position,rotator.rotation,1,2,2.5,"Player",-1)
+	
+
 	get_parent().add_child(b)
+
+func hit(damage):
+	print("ai")
+	

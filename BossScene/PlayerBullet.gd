@@ -8,19 +8,15 @@ var side = 1
 func _ready():
 	pass 
 
-func constructor(position,rotation,damage,size,vel,tgroup,side):
-	self.position=position
-	self.rotation=rotation
+func constructor(damage,size,vel,tgroup,side):
 	self.damage=damage
 	self.size=size
 	self.vel=vel
-	self.group=tgroup
+	self.tgroup=group
 	self.side=side
-	self.scale*=size
 
 func _process(delta):
-	self.position+=Vector2(1*side*vel,0).rotated(self.rotation)
-	
+	self.position+=Vector2(1*side,0).rotated(self.rotation)
 	if self.position.x>get_viewport_rect().size.x:
 		queue_free()
 	if self.position.x<0:
