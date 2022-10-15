@@ -1,14 +1,22 @@
 extends Node2D
 
-var dano := 10
-var tamanho := 10
-
+var damage := 10
+var size := 10
+var vel = 10
+var group ="Enemy"
+var side = 1
 func _ready():
 	pass 
 
+func constructor(damage,size,vel,tgroup,side):
+	self.damage=damage
+	self.size=size
+	self.vel=vel
+	self.tgroup=group
+	self.side=side
 
 func _process(delta):
-	self.position+=Vector2(1,0).rotated(self.rotation)
+	self.position+=Vector2(1*side,0).rotated(self.rotation)
 	if self.position.x>get_viewport_rect().size.x:
 		queue_free()
 	if self.position.x<0:
@@ -17,7 +25,7 @@ func _process(delta):
 		queue_free()
 	if self.position.y<0:
 		queue_free()
+		
 func _on_Area2D_body_entered(body):
-	if body.is_in_group("Enemy"):
-		body.hit(dano)
-		print("hit")
+	if body.is_in_group(group):
+		body.hit(damage)

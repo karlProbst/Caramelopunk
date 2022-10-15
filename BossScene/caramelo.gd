@@ -102,9 +102,9 @@ func hit(dano):
 
 func shoot():
 	var b = bullet_scene.instance()
-	b.position = self.position
-	b.rotation=rotator.rotation
-	b.position.x-=100
+
+	#constructor(position,rotation,damage,size,vel,tgroup,side):
+	b.constructor(self.position,rotation,1,4,10,"Enemy",1)
 	get_parent().add_child(b)
 	print("shoot!")
 
