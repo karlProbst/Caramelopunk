@@ -17,6 +17,7 @@ var lock = false
 var bullets_left = weapon_automatic
 
 onready var timer=$Timer
+onready var invincible=$invincible
 
 var vel:=Vector2.ZERO
 
@@ -81,8 +82,21 @@ func _process(delta):
 			lock = true
 		
 	
+func hit(dano):
+	if(invincible.time_left<=0.1):
+		life-=dano
+		invincible.start(1)
+		#fazer var depois
+		$ColorRect.color="ff0000"
+	
+	
+
 func shoot():
 	print("shoot!")
 
 func _on_Timer_timeout():
 	timer.start(weapon_rate)
+
+
+func _on_invincible_timeout():
+	$ColorRect.color="f89c27"

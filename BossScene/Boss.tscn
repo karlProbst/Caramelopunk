@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://BossScene/caramelo.gd" type="Script" id=1]
 [ext_resource path="res://BossScene/punk.gd" type="Script" id=3]
-[ext_resource path="res://BossScene/Bullet.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 30.0
@@ -21,8 +20,9 @@ margin_right = 1023.0
 margin_bottom = 599.0
 color = Color( 0.329412, 0.956863, 0.941176, 1 )
 
-[node name="caramelo" type="KinematicBody2D" parent="."]
+[node name="caramelo" type="KinematicBody2D" parent="." groups=["Player"]]
 position = Vector2( 164, 423 )
+scale = Vector2( 0.5, 0.5 )
 script = ExtResource( 1 )
 
 [node name="ColorRect6" type="ColorRect" parent="caramelo"]
@@ -68,11 +68,6 @@ margin_right = 68.0
 margin_bottom = -40.0
 color = Color( 0, 0, 0, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="caramelo"]
-position = Vector2( 0, -23 )
-rotation = 1.5708
-shape = SubResource( 1 )
-
 [node name="ColorRect8" type="ColorRect" parent="caramelo"]
 margin_left = 3.0
 margin_top = -51.0
@@ -100,9 +95,17 @@ color = Color( 0.501961, 0.501961, 0.501961, 1 )
 [node name="Timer" type="Timer" parent="caramelo"]
 one_shot = true
 
+[node name="invincible" type="Timer" parent="caramelo"]
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="caramelo"]
+position = Vector2( 0, -23 )
+rotation = 1.5708
+shape = SubResource( 1 )
+
 [node name="punk" type="KinematicBody2D" parent="."]
 material = SubResource( 3 )
-position = Vector2( 799, 329 )
+position = Vector2( 799, 328 )
 scale = Vector2( -2, 2 )
 script = ExtResource( 3 )
 
@@ -163,6 +166,6 @@ shape = SubResource( 1 )
 [node name="rotator" type="Node2D" parent="punk"]
 position = Vector2( 1, 16 )
 
-[node name="bullet" parent="." instance=ExtResource( 4 )]
-
 [connection signal="timeout" from="caramelo/Timer" to="caramelo" method="_on_Timer_timeout"]
+[connection signal="timeout" from="caramelo/invincible" to="caramelo" method="_on_Timer_timeout"]
+[connection signal="timeout" from="caramelo/invincible" to="caramelo" method="_on_invincible_timeout"]
