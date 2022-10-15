@@ -1,7 +1,15 @@
 extends KinematicBody2D
 
 #STATS
-var life:=200
+var life:=200.0
+var max_life:=200.0
+var life_recovery:=1.0
+var coin:=200.0
+var max_coin:=200.0
+var coin_recovery:=1.0
+
+signal player_stats_changed
+
 #se for zero a municao e infinita
 var weapon_automatic:=5
 var weapon_rate:=0.3
@@ -32,9 +40,22 @@ var state := RUN
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	emit_signal("player_stats_changed", self)
 	pass
 
 func _process(delta):
+	var new_coin = min(coin + coin_recovery * delta, max_coin)
+	if new_coin != coin:
+		coin = new_coin
+		emit_signal("player_stats_changed", self)
+		print(coin)
+		
+	var new_life = min(life + life_recovery * delta, max_life)
+	if new_life != life:
+		life = new_life
+		emit_signal("player_stats_changed", self)
+		print(life)
+	
 	match state:
 		IDLE:
 			pass
@@ -100,3 +121,13 @@ func _on_Timer_timeout():
 
 func _on_invincible_timeout():
 	$ColorRect.color="f89c27"
+	
+#codigo para implementar na funcao de dano para tirar vida do player
+# if life >= 10
+# 	life = life - 10
+# 	emit_signal("player_stats_changed", self)
+
+#codigo para implementar na funcao de receber moedas para aumentar qtd de moedas do player
+# if coin <= 10
+# 	coin = coin + 10
+# 	emit_signal("player_stats_changed", self)

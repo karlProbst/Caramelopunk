@@ -1,7 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://BossScene/caramelo.gd" type="Script" id=1]
+[ext_resource path="res://assets/coin/BIG_0000_Capa-1.png" type="Texture" id=2]
 [ext_resource path="res://BossScene/punk.gd" type="Script" id=3]
+[ext_resource path="res://assets/life/heart pixel art 254x254.png" type="Texture" id=4]
+[ext_resource path="res://scripts/Coin.gd" type="Script" id=5]
+[ext_resource path="res://scripts/Life.gd" type="Script" id=6]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 30.0
@@ -11,6 +15,32 @@ height = 10.0
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = SubResource( 2 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 250, 250 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 82, 84 )
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ SubResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="Node2D" type="Node2D"]
 
@@ -166,6 +196,50 @@ shape = SubResource( 1 )
 [node name="rotator" type="Node2D" parent="punk"]
 position = Vector2( 1, 16 )
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Life" type="ColorRect" parent="CanvasLayer"]
+margin_left = 20.0
+margin_top = 10.0
+margin_right = 100.0
+margin_bottom = 19.0
+color = Color( 0, 0, 0, 0.509804 )
+script = ExtResource( 6 )
+
+[node name="bar" type="ColorRect" parent="CanvasLayer/Life"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 79.0
+margin_bottom = 8.0
+color = Color( 0.956863, 0.239216, 0.321569, 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="CanvasLayer/Life"]
+position = Vector2( -2, 4 )
+scale = Vector2( 0.0485, 0.0485 )
+frames = SubResource( 5 )
+
+[node name="Coin" type="ColorRect" parent="CanvasLayer"]
+margin_left = 20.0
+margin_top = 24.0
+margin_right = 100.0
+margin_bottom = 33.0
+color = Color( 0, 0, 0, 0.509804 )
+script = ExtResource( 5 )
+
+[node name="bar" type="ColorRect" parent="CanvasLayer/Coin"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 1.0
+margin_bottom = 8.0
+color = Color( 0.239216, 0.956863, 0.721569, 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="CanvasLayer/Coin"]
+position = Vector2( -2, 5 )
+scale = Vector2( 0.143293, 0.143293 )
+frames = SubResource( 7 )
+
+[connection signal="player_stats_changed" from="caramelo" to="CanvasLayer/Life" method="_on_caramelo_player_stats_changed"]
+[connection signal="player_stats_changed" from="caramelo" to="CanvasLayer/Coin" method="_on_caramelo_player_stats_changed"]
 [connection signal="timeout" from="caramelo/Timer" to="caramelo" method="_on_Timer_timeout"]
-[connection signal="timeout" from="caramelo/invincible" to="caramelo" method="_on_Timer_timeout"]
 [connection signal="timeout" from="caramelo/invincible" to="caramelo" method="_on_invincible_timeout"]
+[connection signal="timeout" from="caramelo/invincible" to="caramelo" method="_on_Timer_timeout"]
