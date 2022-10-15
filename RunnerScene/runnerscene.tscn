@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://RunnerScene/enemy_spawn.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://RunnerScene/Tiles/Front Tiles/IMG_4302.PNG" type="Texture" id=3]
 [ext_resource path="res://RunnerScene/Tiles/Front Tiles/IMG_4303.PNG" type="Texture" id=4]
 [ext_resource path="res://RunnerScene/Tiles/Front Tiles/IMG_4304.PNG" type="Texture" id=5]
+[ext_resource path="res://RunnerScene/Player.gd" type="Script" id=6]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -12,6 +14,20 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 } ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 88, 85 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 103, 76 )
 
 [node name="Runner" type="Node2D"]
 script = ExtResource( 1 )
@@ -40,3 +56,26 @@ offset = Vector2( -240, 0 )
 position = Vector2( 2400, 540 )
 frames = SubResource( 1 )
 offset = Vector2( -240, 0 )
+
+[node name="Area2D" type="KinematicBody2D" parent="."]
+position = Vector2( 318, 809 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Area2D"]
+scale = Vector2( 2.90625, 2.75 )
+frames = SubResource( 3 )
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2( 317, 972 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource( 4 )
