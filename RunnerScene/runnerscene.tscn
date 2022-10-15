@@ -57,17 +57,17 @@ position = Vector2( 2400, 540 )
 frames = SubResource( 1 )
 offset = Vector2( -240, 0 )
 
-[node name="Area2D" type="KinematicBody2D" parent="."]
+[node name="Player_runner" type="KinematicBody2D" parent="."]
 position = Vector2( 318, 809 )
 script = ExtResource( 6 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player_runner"]
 shape = SubResource( 2 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Area2D"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Player_runner"]
 scale = Vector2( 2.90625, 2.75 )
 frames = SubResource( 3 )
 

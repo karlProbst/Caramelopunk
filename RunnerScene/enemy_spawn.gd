@@ -6,7 +6,7 @@ onready var front_tile_03 = $FrontTile_03
 onready var front_tile_04 = $FrontTile_04
 onready var front_tile_05 = $FrontTile_05
 
-var vel := 5.0
+var vel := 10.0
 
 var rng = RandomNumberGenerator.new()
 
@@ -18,6 +18,9 @@ func _ready():
 
 func _process(delta):
 	
+	front_tile_controller()
+
+func front_tile_controller():
 	for tile in tiles_array:
 		tile.position.x -= vel
 		
@@ -26,8 +29,8 @@ func _process(delta):
 			tile.frame = rng.randi_range(0,3)
 			tile.position.x = 2400
 
-func front_tile_controller():
+func back_tile_controller():
 	pass
 
-func back_tile_controller():
+func obstacle_spawner():
 	pass
