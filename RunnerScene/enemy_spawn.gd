@@ -22,6 +22,7 @@ func _process(delta):
 		tile.position.x -= vel
 		
 		if tile.position.x < 0:
+			
 			tile.frame = rng.randi_range(0,3)
 			tile.position.x = 2400
 

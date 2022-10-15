@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://BossScene/caramelo.gd" type="Script" id=1]
+[ext_resource path="res://player_bullet.tscn" type="PackedScene" id=2]
 [ext_resource path="res://BossScene/punk.gd" type="Script" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
@@ -16,8 +17,8 @@ shader = SubResource( 2 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_top = 1.0
-margin_right = 1023.0
-margin_bottom = 599.0
+margin_right = 1916.0
+margin_bottom = 1075.0
 color = Color( 0.329412, 0.956863, 0.941176, 1 )
 
 [node name="caramelo" type="KinematicBody2D" parent="." groups=["Player"]]
@@ -103,9 +104,9 @@ position = Vector2( 0, -23 )
 rotation = 1.5708
 shape = SubResource( 1 )
 
-[node name="punk" type="KinematicBody2D" parent="."]
+[node name="punk" type="KinematicBody2D" parent="." groups=["Enemy"]]
 material = SubResource( 3 )
-position = Vector2( 799, 328 )
+position = Vector2( 1500, 411 )
 scale = Vector2( -2, 2 )
 script = ExtResource( 3 )
 
@@ -165,6 +166,8 @@ shape = SubResource( 1 )
 
 [node name="rotator" type="Node2D" parent="punk"]
 position = Vector2( 1, 16 )
+
+[node name="Area2D" parent="." instance=ExtResource( 2 )]
 
 [connection signal="timeout" from="caramelo/Timer" to="caramelo" method="_on_Timer_timeout"]
 [connection signal="timeout" from="caramelo/invincible" to="caramelo" method="_on_Timer_timeout"]
