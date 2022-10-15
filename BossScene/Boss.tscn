@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://BossScene/caramelo.gd" type="Script" id=1]
 [ext_resource path="res://assets/coin/BIG_0000_Capa-1.png" type="Texture" id=2]
@@ -6,15 +6,33 @@
 [ext_resource path="res://assets/life/heart pixel art 254x254.png" type="Texture" id=4]
 [ext_resource path="res://scripts/Coin.gd" type="Script" id=5]
 [ext_resource path="res://scripts/Life.gd" type="Script" id=6]
+[ext_resource path="res://BossScene/follow.gd" type="Script" id=7]
+[ext_resource path="res://icon.png" type="Texture" id=8]
+[ext_resource path="res://BossScene/rigid_bullet.tscn" type="PackedScene" id=9]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 30.0
-height = 10.0
+radius = 13.0
+height = 0.0
+
+[sub_resource type="SpriteFrames" id=11]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [sub_resource type="Shader" id=2]
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = SubResource( 2 )
+
+[sub_resource type="AnimationNodeStateMachine" id=8]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=9]
+
+[sub_resource type="Animation" id=10]
+resource_name = "boss_stage1"
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 4
@@ -129,9 +147,12 @@ one_shot = true
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="caramelo"]
-position = Vector2( 0, -23 )
+position = Vector2( 0, -22.5001 )
 rotation = 1.5708
 shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="caramelo"]
+frames = SubResource( 11 )
 
 [node name="punk" type="KinematicBody2D" parent="." groups=["Enemy"]]
 material = SubResource( 3 )
@@ -196,7 +217,18 @@ shape = SubResource( 1 )
 [node name="rotator" type="Node2D" parent="punk"]
 position = Vector2( 1, 16 )
 
+[node name="AnimationTree" type="AnimationTree" parent="punk"]
+tree_root = SubResource( 8 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 9 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="punk"]
+anims/boss_stage1 = SubResource( 10 )
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+scale = Vector2( 5, 5 )
+transform = Transform2D( 5, 0, 0, 5, 0, 0 )
 
 [node name="Life" type="ColorRect" parent="CanvasLayer"]
 margin_left = 20.0
@@ -238,8 +270,19 @@ position = Vector2( -2, 5 )
 scale = Vector2( 0.143293, 0.143293 )
 frames = SubResource( 7 )
 
+[node name="Node2D" type="RigidBody2D" parent="."]
+gravity_scale = 0.0
+script = ExtResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="Node2D"]
+position = Vector2( 0, 1 )
+scale = Vector2( 0.25, 0.265625 )
+texture = ExtResource( 8 )
+
+[node name="RigidBody2D" parent="." instance=ExtResource( 9 )]
+
 [connection signal="player_stats_changed" from="caramelo" to="CanvasLayer/Life" method="_on_caramelo_player_stats_changed"]
 [connection signal="player_stats_changed" from="caramelo" to="CanvasLayer/Coin" method="_on_caramelo_player_stats_changed"]
 [connection signal="timeout" from="caramelo/Timer" to="caramelo" method="_on_Timer_timeout"]
-[connection signal="timeout" from="caramelo/invincible" to="caramelo" method="_on_invincible_timeout"]
 [connection signal="timeout" from="caramelo/invincible" to="caramelo" method="_on_Timer_timeout"]
+[connection signal="timeout" from="caramelo/invincible" to="caramelo" method="_on_invincible_timeout"]

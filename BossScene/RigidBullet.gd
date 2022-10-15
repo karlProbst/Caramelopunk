@@ -1,4 +1,11 @@
-extends Node2D
+extends RigidBody2D
+
+onready var target = get_node("../punk")
+
+
+
+
+
 
 var damage := 10
 var size := 10
@@ -19,19 +26,23 @@ func constructor(position,rotation,damage,size,vel,tgroup,side):
 	self.side=side
 	self.scale*=size
 
+func _integrate_forces(delta):
+	
+	look_at(target.global_position)
+	var angle = rotation
+	apply_central_impulse(Vector2(cos(angle), sin(angle)) * 30)
+	
 func _process(delta):
 	
-	self.position+=Vector2(1*side*vel,0).rotated(self.rotation)
+	pass
 	
-	if self.position.x>get_viewport_rect().size.x:
-		queue_free()
-	if self.position.x<0:
-		queue_free()
-	if self.position.y>get_viewport_rect().size.y:
-		queue_free()
-	if self.position.y<0:
-		queue_free()
-		
 func _on_Area2D_body_entered(body):
 	if body.is_in_group(group):
 		body.hit(damage)
+
+
+func _on_RigidBody2D_body_entered(body):
+	if body.is_in_group(group):
+		body.hit(damage)
+
+

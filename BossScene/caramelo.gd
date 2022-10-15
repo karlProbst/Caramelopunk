@@ -19,7 +19,7 @@ var weapon_spread:=10
 var max_vel:=300
 var accel:=max_vel/3
 var bullet_scene = load("res://BossScene/Bullet.tscn")
-
+var scaley=scale.y
 #------------------------------------
 var lock = false
 var bullets_left = weapon_automatic
@@ -54,7 +54,7 @@ func _process(delta):
 	if new_life != life:
 		life = new_life
 		emit_signal("player_stats_changed", self)
-		print(life)
+
 	
 	match state:
 		IDLE:
@@ -64,19 +64,23 @@ func _process(delta):
 		BARK:
 			pass
 #MOVEMENT---------------------------------------------
-	if Input.is_action_pressed("ui_right"):
-		if vel.x<max_vel:
-			vel.x+=accel*2
-	if Input.is_action_pressed("ui_left"):
-		if vel.x>-max_vel:
-			vel.x-=accel*2
-	if Input.is_action_pressed("ui_up"):
-		if vel.y>-max_vel:
-			vel.y-=accel*2
-	if Input.is_action_pressed("ui_down"):
-		if vel.y<max_vel:
-			vel.y+=accel*2
-
+	if(life>0):
+		if Input.is_action_pressed("ui_right"):
+			if vel.x<max_vel:
+				vel.x+=accel*2
+		if Input.is_action_pressed("ui_left"):
+			if vel.x>-max_vel:
+				vel.x-=accel*2
+		if Input.is_action_pressed("ui_up"):
+			if vel.y>-max_vel:
+				vel.y-=accel*2
+		if Input.is_action_pressed("ui_down"):
+			if vel.y<max_vel:
+				vel.y+=accel*2
+	else:
+		vel.y+=accel*1.2
+		
+		scale.y=-scaley
 	if vel.x>0:
 		vel.x-=accel
 	if vel.x<0:
@@ -94,6 +98,9 @@ func _process(delta):
 		position.x=get_viewport_rect().size.x
 	if position.x<0:
 		position.x=0
+		
+	
+	
 #----------------------------------------------------
 	if !Input.is_action_pressed("ui_accept"):
 		lock=false
@@ -127,7 +134,7 @@ func shoot():
 	#constructor(position,rotation,damage,size,vel,tgroup,side):
 	b.constructor(self.position,rotation,1,4,10,"Enemy",1)
 	get_parent().add_child(b)
-	print("shoot!")
+
 
 func _on_Timer_timeout():
 	timer.start(weapon_rate)
