@@ -1,0 +1,168 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://BossScene/caramelo.gd" type="Script" id=1]
+[ext_resource path="res://BossScene/punk.gd" type="Script" id=3]
+[ext_resource path="res://BossScene/Bullet.tscn" type="PackedScene" id=4]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 30.0
+height = 10.0
+
+[sub_resource type="Shader" id=2]
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_top = 1.0
+margin_right = 1023.0
+margin_bottom = 599.0
+color = Color( 0.329412, 0.956863, 0.941176, 1 )
+
+[node name="caramelo" type="KinematicBody2D" parent="."]
+position = Vector2( 164, 423 )
+script = ExtResource( 1 )
+
+[node name="ColorRect6" type="ColorRect" parent="caramelo"]
+margin_left = -66.0
+margin_top = -43.0
+margin_right = -25.0
+margin_bottom = -38.0
+rect_rotation = 30.6347
+color = Color( 0.972549, 0.611765, 0.152941, 1 )
+
+[node name="ColorRect4" type="ColorRect" parent="caramelo"]
+margin_left = -29.0
+margin_top = -17.0
+margin_right = -20.0
+margin_bottom = 29.0
+color = Color( 0.972549, 0.611765, 0.152941, 1 )
+
+[node name="ColorRect5" type="ColorRect" parent="caramelo"]
+margin_left = 36.0
+margin_top = -33.0
+margin_right = 45.0
+margin_bottom = 13.0
+color = Color( 0.972549, 0.611765, 0.152941, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="caramelo"]
+margin_left = 39.0
+margin_top = -55.0
+margin_right = 57.0
+margin_bottom = -34.0
+color = Color( 0.972549, 0.611765, 0.152941, 1 )
+
+[node name="ColorRect3" type="ColorRect" parent="caramelo"]
+margin_left = 43.0
+margin_top = -43.0
+margin_right = 68.0
+margin_bottom = -34.0
+color = Color( 0.972549, 0.611765, 0.152941, 1 )
+
+[node name="ColorRect7" type="ColorRect" parent="caramelo"]
+margin_left = 63.0
+margin_top = -43.0
+margin_right = 68.0
+margin_bottom = -40.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="caramelo"]
+position = Vector2( 0, -23 )
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="ColorRect8" type="ColorRect" parent="caramelo"]
+margin_left = 3.0
+margin_top = -51.0
+margin_right = 43.0
+margin_bottom = -11.0
+rect_scale = Vector2( 0.900934, 0.272889 )
+color = Color( 0.501961, 0.501961, 0.501961, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="caramelo"]
+margin_left = -38.0
+margin_top = -22.0
+margin_right = 43.0
+margin_bottom = 5.0
+rect_rotation = -17.0254
+color = Color( 0.972549, 0.611765, 0.152941, 1 )
+
+[node name="ColorRect9" type="ColorRect" parent="caramelo"]
+margin_left = 4.0
+margin_top = -38.0
+margin_right = 44.0
+margin_bottom = 2.0
+rect_scale = Vector2( 0.900934, 0.272889 )
+color = Color( 0.501961, 0.501961, 0.501961, 1 )
+
+[node name="Timer" type="Timer" parent="caramelo"]
+one_shot = true
+
+[node name="punk" type="KinematicBody2D" parent="."]
+material = SubResource( 3 )
+position = Vector2( 799, 329 )
+scale = Vector2( -2, 2 )
+script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="punk"]
+margin_left = -44.0
+margin_top = -28.0
+margin_right = 37.0
+margin_bottom = -1.0
+color = Color( 0.972549, 0.611765, 0.152941, 1 )
+
+[node name="ColorRect6" type="ColorRect" parent="punk"]
+margin_left = -60.0
+margin_top = -28.0
+margin_right = -19.0
+margin_bottom = -23.0
+color = Color( 0.972549, 0.611765, 0.152941, 1 )
+
+[node name="ColorRect4" type="ColorRect" parent="punk"]
+margin_left = -37.0
+margin_top = -29.0
+margin_right = -28.0
+margin_bottom = 17.0
+color = Color( 0.972549, 0.611765, 0.152941, 1 )
+
+[node name="ColorRect5" type="ColorRect" parent="punk"]
+margin_left = 29.0
+margin_top = -30.0
+margin_right = 38.0
+margin_bottom = 16.0
+color = Color( 0.972549, 0.611765, 0.152941, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="punk"]
+margin_left = 40.0
+margin_top = -39.0
+margin_right = 58.0
+margin_bottom = -18.0
+color = Color( 0.972549, 0.611765, 0.152941, 1 )
+
+[node name="ColorRect3" type="ColorRect" parent="punk"]
+margin_left = 44.0
+margin_top = -27.0
+margin_right = 69.0
+margin_bottom = -18.0
+color = Color( 0.972549, 0.611765, 0.152941, 1 )
+
+[node name="ColorRect7" type="ColorRect" parent="punk"]
+margin_left = 64.0
+margin_top = -27.0
+margin_right = 69.0
+margin_bottom = -24.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="punk"]
+position = Vector2( -0.126221, -0.371582 )
+rotation = -1.54402
+shape = SubResource( 1 )
+
+[node name="rotator" type="Node2D" parent="punk"]
+position = Vector2( 1, 16 )
+
+[node name="bullet" parent="." instance=ExtResource( 4 )]
+
+[connection signal="timeout" from="caramelo/Timer" to="caramelo" method="_on_Timer_timeout"]
