@@ -67,7 +67,13 @@ func roundShoot():
 	rotator.rotate(rotation_rate)
 	var b = bullet_scene.instance()
 	#constructor(position,rotation,damage,size,vel,tgroup,side):
+<<<<<<< HEAD
 	b.constructor(self.position,rotator.rotation,1,2,2.5,"Player",-1)
+=======
+	b.constructor(self.position,rotator.rotation,50,2,2.5,"Player",-1)
+
+
+>>>>>>> refs/remotes/origin/main
 	get_parent().add_child(b)
 func hit(damage):
 	life-=damage

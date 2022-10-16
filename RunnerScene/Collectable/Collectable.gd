@@ -12,7 +12,7 @@ func _ready():
 
 
 func _process(delta):
-	position.x -= get_parent().vel
+	pass
 
 
 func _on_Collectable_body_entered(body):
