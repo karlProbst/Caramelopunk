@@ -30,7 +30,7 @@ onready var stat_shield_gacha_label = $stat_shield/gacha
 #STATS
 var stat_firerate=0
 var stat_shield=0
-var stat_projectiles=0
+var stat_projectiles=6
 var stat_missile=0
 
 var stat_firerate_gacha=0

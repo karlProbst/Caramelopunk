@@ -57,8 +57,34 @@ func _ready():
 	pass
 
 func _process(delta):
+	match stat_shield:
+		0:
+			pass
+		1:
+			shield.scale.y=0.7
+			shield.scale.x=0.7
+			shield.rotation+=delta*3
+		2:
+			shield.scale.y=1
+			shield.scale.x=1
+			shield.rotation+=delta*3
+		3:
+			shield.scale.y=1.2
+			shield.scale.x=1.2
+			shield.rotation+=delta*3.5
+		4:
+			shield.scale.y=1.5
+			shield.scale.x=1.5
+			shield.rotation+=delta*4
+		5:
+			shield.scale.y=1.6
+			shield.scale.x=1.6
+			shield.rotation+=delta*4.1
+		6:
+			shield.scale.y=1.2
+			shield.scale.x=1.2
+			shield.rotation+=delta*4.2
 	
-	shield.rotation+=delta*3
 	var new_coin = min(coin + coin_recovery * delta, max_coin)
 	if new_coin != coin:
 		coin = new_coin
@@ -80,7 +106,8 @@ func _process(delta):
 			pass
 #MOVEMENT---------------------------------------------
 	if(life>0):
-		timer2.wait_time=weapon_rate
+		
+		timer2.wait_time=weapon_rate*(stat_firerate)
 		if(vel==Vector2.ZERO):
 			state=RUN
 		else:
@@ -172,6 +199,10 @@ func _process(delta):
 				for i in missile_count/2:
 					shootMissile()
 				missile_count=0
+			6:
+				for i in missile_count:
+					shootMissile()
+				missile_count=0
 		
 		
 	
@@ -191,11 +222,11 @@ func shootMissile():
 	b.constructor(self.position,rotation,1+stat_dmg,1,10,"Enemy",1)
 	get_parent().add_child(b)	
 
-func shoot():
+func shoot(rot):
 	var b = bullet_scene.instance()
 
 	#constructor(position,rotation,damage,size,vel,tgroup,side):
-	b.constructor(self.position,rotation,1+stat_dmg,4,10,"Enemy",1)
+	b.constructor(self.position,rotation+rot,1+stat_dmg,4,10,"Enemy",1)
 	get_parent().add_child(b)
 
 
@@ -218,4 +249,8 @@ func _on_invincible_timeout():
 
 
 func _on_Timer2_timeout():
-	shoot()
+	for i in stat_projectiles+1:
+		if(i%2==0):
+			shoot((i*0.01)*stat_projectiles)
+		else:
+			shoot(-(i*0.01)*stat_projectiles)

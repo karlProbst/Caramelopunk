@@ -31,8 +31,8 @@ func _ready():
 
 
 func _process(delta):
-	shoot()
-	roundShoot()
+	if(life<max_life/1.5 and lock==0):
+		vel=300
 	if(life<max_life/2 and lock==0):
 		idle_timer.set_wait_time(0.45)
 		vel=400
@@ -81,13 +81,13 @@ func roundShoot():
 	rotator.rotate(rotation_rate)
 	var b = bullet_scene.instance()
 	#constructor(position,rotation,damage,size,vel,tgroup,side):
-	b.constructor(self.position,rotator.rotation,1,3,2.5,"Player",-1)
+	b.constructor(self.position,rotator.rotation,2+(vel/100),3,vel/50,"Player",-1)
 
 	get_parent().add_child(b)
 func shoot():
 	var b = bullet_scene.instance()
 	#constructor(position,rotation,damage,size,vel,tgroup,side):
-	b.constructor(self.position,rotation,1,10,2.5,"Player",-1)
+	b.constructor(self.position,rotation,1,10,vel/40,"Player",-1)
 	get_parent().add_child(b)
 func hit(damage):
 	life-=damage

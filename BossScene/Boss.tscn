@@ -158,7 +158,7 @@ rotation = -0.0855211
 position = Vector2( 118.125, 13.1251 )
 scale = Vector2( 0.897485, 0.897485 )
 frames = SubResource( 16 )
-frame = 2
+frame = 3
 speed_scale = 3.0
 playing = true
 offset = Vector2( 23.5903, -0.479858 )
@@ -270,7 +270,7 @@ script = ExtResource( 5 )
 position = Vector2( 21.5625, 29.1372 )
 scale = Vector2( 0.717988, 0.717988 )
 frames = SubResource( 7 )
-frame = 1
+frame = 7
 speed_scale = 3.0
 playing = true
 
