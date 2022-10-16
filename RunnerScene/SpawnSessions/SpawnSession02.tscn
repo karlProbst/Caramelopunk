@@ -26,7 +26,7 @@ position = Vector2( 1732, 633 )
 position = Vector2( 697, 284 )
 
 [node name="Obstacle" parent="." instance=ExtResource( 2 )]
-position = Vector2( 359, 840 )
+position = Vector2( 1054, 840 )
 
 [node name="Obstacle2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1302, 840 )

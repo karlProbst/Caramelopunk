@@ -19,7 +19,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 88, 51.5 )
+extents = Vector2( 141.5, 100.5 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
@@ -45,7 +45,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 965.5, 76 )
+extents = Vector2( 1111.5, 76 )
 
 [node name="Runner" type="Node2D"]
 script = ExtResource( 1 )
@@ -82,10 +82,11 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_runner"]
-position = Vector2( 0, 33.5 )
+position = Vector2( -22.5, -16.5 )
 shape = SubResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Player_runner"]
+position = Vector2( 0, -40 )
 frames = SubResource( 3 )
 animation = "Jumping"
 playing = true
@@ -97,5 +98,5 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2( 647.5, 0 )
+position = Vector2( 501.5, 0 )
 shape = SubResource( 4 )

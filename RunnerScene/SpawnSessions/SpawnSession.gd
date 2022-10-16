@@ -15,6 +15,5 @@ func _ready():
 func _process(delta):
 	if self.position.x <= -1920:
 		self.queue_free()
-		print(self.position)
 	self.position.x -= get_parent().vel
 	

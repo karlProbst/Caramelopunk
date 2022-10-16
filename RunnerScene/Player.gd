@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 onready var anim = $AnimatedSprite
+onready var col = $CollisionShape2D
 
 var jumpspeed = 1650
 var fall_speed = 50
@@ -22,7 +23,8 @@ func _ready():
 func _physics_process(delta):
 	
 	jump_input()
-	
+	if position.x <= -170:
+		get_tree().root.get_child(0).death()
 
 func jump_input():
 	
@@ -41,9 +43,13 @@ func jump_input():
 			anim.play("Run")
 		CROUCH:
 			anim.play("Crouch")
+			col.position.y = 30
+			col.scale.y = 0.5
 		JUMP:
 			jump()
 			anim.play("Jumping")
+			col.position.y = -16.5
+			col.scale.y = 1
 		FALLING:
 			vel.y += fall_speed
 			anim.play("Fall")
