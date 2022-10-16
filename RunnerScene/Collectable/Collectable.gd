@@ -12,10 +12,10 @@ func _ready():
 
 
 func _process(delta):
-	position.x -= get_parent().vel
+	pass
 
 
 func _on_Collectable_body_entered(body):
 	if body.has_method("_interact"):
-		get_tree().root.get_child(0).coin_count += 1
+		get_tree().root.get_child(0).coins_count += 1
 		queue_free()
