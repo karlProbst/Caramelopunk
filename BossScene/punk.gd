@@ -40,13 +40,13 @@ func _process(delta):
 				
 		
 				if(position.x<new_pos.x):
-					position.x+=(position.x-new_pos.x)/1*delta
+					position.x+=vel*delta
 				if(position.x>new_pos.x):
-					position.x-=(position.x-new_pos.x)/1*delta
+					position.x-=vel*delta
 				if(position.y<new_pos.y):
-					position.y+=(position.y-new_pos.y)/1*delta
+					position.y+=vel*delta
 				if(position.y>new_pos.y):
-					position.y-=(position.y-new_pos.y)/1*delta
+					position.y-=vel*delta
 			else:
 				
 				idle_timer.start()
@@ -67,13 +67,9 @@ func roundShoot():
 	rotator.rotate(rotation_rate)
 	var b = bullet_scene.instance()
 	#constructor(position,rotation,damage,size,vel,tgroup,side):
-<<<<<<< HEAD
 	b.constructor(self.position,rotator.rotation,1,2,2.5,"Player",-1)
-=======
 	b.constructor(self.position,rotator.rotation,50,2,2.5,"Player",-1)
 
-
->>>>>>> refs/remotes/origin/main
 	get_parent().add_child(b)
 func hit(damage):
 	life-=damage
