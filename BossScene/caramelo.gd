@@ -1,10 +1,10 @@
 extends KinematicBody2D
 
 #STATS
-var life:=200.0
-var max_life:=200.0
+var life:=3
+var max_life:=3
 var life_recovery:=1.0
-var coin:=200.0
+var coin:=200
 var max_coin:=200.0
 var coin_recovery:=1.0
 
@@ -29,8 +29,9 @@ var bullets_left = weapon_automatic
 
 onready var sprite = $AnimatedSprite
 onready var timer=$Timer
+onready var timer2=$Timer2
 onready var invincible=$invincible
-
+onready var shield = $shield
 var vel:=Vector2.ZERO
 
 
@@ -48,6 +49,8 @@ func _ready():
 	pass
 
 func _process(delta):
+	
+	shield.rotation+=delta*3
 	var new_coin = min(coin + coin_recovery * delta, max_coin)
 	if new_coin != coin:
 		coin = new_coin
@@ -69,6 +72,7 @@ func _process(delta):
 			pass
 #MOVEMENT---------------------------------------------
 	if(life>0):
+		timer2.wait_time=weapon_rate
 		if(vel==Vector2.ZERO):
 			state=RUN
 		else:
@@ -99,9 +103,11 @@ func _process(delta):
 		else:
 			rotation=rotationx
 	else:
-		vel.y+=accel*1.2
-		
+		#DEATH
+		sprite.speed_scale=0
 		scale.y=-scaley
+		shield.modulate = Color(0,0,0,0)
+		timer2.wait_time=9999999999999
 	if vel.x>0:
 		vel.x-=accel
 	if vel.x<0:
@@ -148,7 +154,7 @@ func hit(dano):
 		invincible.start(1)
 		#fazer var depois
 		self.modulate = Color(10,2,2,1)
-	
+		
 
 
 func shootMissile():
@@ -182,3 +188,7 @@ func _on_invincible_timeout():
 # if coin <= 10
 # 	coin = coin + 10
 # 	emit_signal("player_stats_changed", self)
+
+
+func _on_Timer2_timeout():
+	shoot()

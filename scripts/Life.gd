@@ -1,10 +1,12 @@
-extends ColorRect
+extends Container
 
 
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
+onready var h1 = $"1"
+onready var h2 = $"2"
+onready var h3 = $"3"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,4 +19,21 @@ func _ready():
 
 
 func _on_caramelo_player_stats_changed(var caramelo):
-	$bar.rect_size.x = 78 * caramelo.life / caramelo.max_life
+	
+	match(caramelo.life):
+		0:
+			h1.modulate = Color(0,0,0,1)
+			h2.modulate = Color(0,0,0,1)
+			h3.modulate = Color(0,0,0,1)
+		1:
+			h1.modulate = Color(1,1,1,1)
+			h2.modulate = Color(0,0,0,1)
+			h3.modulate = Color(0,0,0,1)
+		2:
+			h1.modulate = Color(1,1,1,1)
+			h2.modulate = Color(1,1,1,1)
+			h3.modulate = Color(0,0,0,1)
+		3:
+			h1.modulate = Color(1,1,1,1)
+			h2.modulate = Color(1,1,1,1)
+			h3.modulate = Color(1,1,1,1)
