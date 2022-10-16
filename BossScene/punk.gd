@@ -31,7 +31,8 @@ func _ready():
 
 
 func _process(delta):
-	
+	shoot()
+	roundShoot()
 	if(life<max_life/2 and lock==0):
 		idle_timer.set_wait_time(0.45)
 		vel=400

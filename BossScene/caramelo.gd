@@ -1,6 +1,11 @@
 extends KinematicBody2D
 
 #STATS
+onready var stat_firerate=get_tree().root.get_child(0).stat_firerate
+onready var stat_shield=get_tree().root.get_child(0).stat_shield
+onready var stat_projectiles=get_tree().root.get_child(0).stat_projectiles
+onready var stat_missile=get_tree().root.get_child(0).stat_missile
+
 var life:=3
 var max_life:=3
 var life_recovery:=1.0
@@ -25,6 +30,7 @@ var missile_scene = load("res://BossScene/rigid_bullet.tscn")
 var scaley=scale.y
 var scalex=scale.x
 var rotationx=rotation
+var missile_count = 0
 #------------------------------------
 var lock = false
 var bullets_left = weapon_automatic
@@ -140,14 +146,33 @@ func _process(delta):
 	if Input.is_action_pressed("ui_accept"):
 		
 		#shoot()
-		if(bullets_left>0 and timer.time_left<=0.1):
-			shoot()
-			shootMissile()
-			bullets_left-=1
-			timer.start(weapon_rate)
-			
-		else:
-			lock = true
+		match stat_missile:
+			0:
+				if(missile_count>0 and timer.time_left<=0.1):
+					shootMissile()
+					missile_count-=20
+					timer.start(weapon_rate)
+			1:		
+				for i in missile_count/20:
+					shootMissile()
+				missile_count=0
+			2:
+				for i in missile_count/15:
+					shootMissile()
+				missile_count=0
+			3:
+				for i in missile_count/10:
+					shootMissile()
+				missile_count=0
+			4:
+				for i in int(missile_count/5):
+					shootMissile()
+				missile_count=0
+			5:
+				for i in missile_count/2:
+					shootMissile()
+				missile_count=0
+		
 		
 	
 func hit(dano):
