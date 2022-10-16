@@ -89,13 +89,20 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Label2" type="Label" parent="stat_firerate"]
+[node name="label" type="Label" parent="stat_firerate"]
 margin_left = 117.0
 margin_top = 40.0
 margin_right = 157.0
 margin_bottom = 54.0
 text = "fire rate
 "
+
+[node name="gacha" type="Label" parent="stat_firerate"]
+margin_left = 230.0
+margin_top = 40.0
+margin_right = 280.0
+margin_bottom = 71.0
+text = "0"
 
 [node name="stat_shield" type="Button" parent="."]
 margin_left = 227.0
@@ -107,13 +114,20 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Label2" type="Label" parent="stat_shield"]
+[node name="label" type="Label" parent="stat_shield"]
 margin_left = 117.0
 margin_top = 40.0
 margin_right = 157.0
 margin_bottom = 54.0
 text = "shield
 "
+
+[node name="gacha" type="Label" parent="stat_shield"]
+margin_left = 229.0
+margin_top = 40.0
+margin_right = 269.0
+margin_bottom = 71.0
+text = "0"
 
 [node name="stat_projectile" type="Button" parent="."]
 margin_left = 226.0
@@ -125,12 +139,21 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Label2" type="Label" parent="stat_projectile"]
+[node name="label" type="Label" parent="stat_projectile"]
 margin_left = 117.0
 margin_top = 40.0
 margin_right = 157.0
 margin_bottom = 54.0
 text = "number of projectiles
+"
+
+[node name="gacha" type="Label" parent="stat_projectile"]
+margin_left = 240.0
+margin_top = 66.0
+margin_right = 378.0
+margin_bottom = 114.0
+text = "0
+
 "
 
 [node name="stat_missile" type="Button" parent="."]
@@ -143,12 +166,20 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Label2" type="Label" parent="stat_missile"]
+[node name="label" type="Label" parent="stat_missile"]
 margin_left = 117.0
 margin_top = 40.0
 margin_right = 157.0
 margin_bottom = 54.0
 text = "missile
+"
+
+[node name="gacha" type="Label" parent="stat_missile"]
+margin_left = 233.0
+margin_top = 64.0
+margin_right = 280.0
+margin_bottom = 95.0
+text = "0
 "
 
 [node name="Coin" type="ColorRect" parent="."]
