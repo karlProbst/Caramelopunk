@@ -11,6 +11,8 @@ onready var boss = $punk
 onready var death_index = $death
 onready var death = $death/Death
 onready var death_message = $death/Message
+
+
 var color = 1
 var color2 = 0
 func _ready():

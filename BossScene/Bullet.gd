@@ -5,7 +5,6 @@ var size := 10
 var vel = 10
 var group ="Enemy"
 var side = 1
-
 func _ready():
 	pass 
 
@@ -34,6 +33,7 @@ func _process(delta):
 		
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("shield") and group!="Enemy":
+		body.get_parent().missile_count+=1
 		queue_free()
 	if body.is_in_group(group):
 		body.hit(damage)

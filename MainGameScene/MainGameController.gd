@@ -22,7 +22,7 @@ onready var stat_projectile_label = $stat_projectile/label
 onready var stat_missile_label = $stat_missile/label
 onready var stat_shield_label = $stat_shield/label
 
-onready var stat_firerate_gacha_label = $stat_shield/gacha
+onready var stat_firerate_gacha_label = $stat_firerate/gacha
 onready var stat_projectile_gacha_label = $stat_projectile/gacha
 onready var stat_missile_gacha_label = $stat_missile/gacha
 onready var stat_shield_gacha_label = $stat_shield/gacha
@@ -78,8 +78,10 @@ func _process(delta):
 		button_gacha_number.text=str(gacha_value)
 		var rand = rng.randi_range(1,4)
 		match rand:
-			1:
-				stat_firerate_gacha+=1	
+			1:	
+				
+				stat_firerate_gacha+=1
+				print(str(stat_firerate_gacha)+" "+str(stat_firerate))
 			2:
 				stat_shield_gacha+=1
 			3:
