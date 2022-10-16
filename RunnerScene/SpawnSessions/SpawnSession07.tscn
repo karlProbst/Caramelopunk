@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://RunnerScene/Collectable/Collectable.tscn" type="PackedScene" id=1]
+[ext_resource path="res://RunnerScene/SpawnSessions/SpawnSession.gd" type="Script" id=2]
+[ext_resource path="res://RunnerScene/Obstacles/HighObstacle.tscn" type="PackedScene" id=3]
+
+[node name="SpawnSession" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Collectable7" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1194, 917 )
+
+[node name="Collectable8" parent="." instance=ExtResource( 1 )]
+position = Vector2( 936, 918 )
+
+[node name="Collectable10" parent="." instance=ExtResource( 1 )]
+position = Vector2( 656, 914 )
+
+[node name="Collectable9" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1648, 756 )
+
+[node name="Collectable11" parent="." instance=ExtResource( 1 )]
+position = Vector2( 172, 768 )
+
+[node name="Collectable12" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1664, 592 )
+
+[node name="Collectable13" parent="." instance=ExtResource( 1 )]
+position = Vector2( 384, 884 )
+
+[node name="Obstacle" parent="." instance=ExtResource( 3 )]
+position = Vector2( 872, 500 )
