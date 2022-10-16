@@ -16,14 +16,16 @@ var weapon_rate:=0.3
 var weapon_bullets:=1
 #em graus
 var weapon_spread:=10
-var max_vel:=300
+var max_vel:=600
 var accel:=max_vel/3
 var bullet_scene = load("res://BossScene/Bullet.tscn")
+var missile_scene = load("res://BossScene/rigid_bullet.tscn")
 var scaley=scale.y
 #------------------------------------
 var lock = false
 var bullets_left = weapon_automatic
 
+onready var sprite = $AnimatedSprite
 onready var timer=$Timer
 onready var invincible=$invincible
 
@@ -58,13 +60,19 @@ func _process(delta):
 	
 	match state:
 		IDLE:
-			pass
+			sprite.animation="run"
 		RUN:
-			pass
+			sprite.animation="idle"
 		BARK:
 			pass
 #MOVEMENT---------------------------------------------
 	if(life>0):
+		if(vel==Vector2.ZERO):
+			state=RUN
+		else:
+			state=IDLE
+		
+		#DIAGONAL
 		if Input.is_action_pressed("ui_right"):
 			if vel.x<max_vel:
 				vel.x+=accel*2
@@ -102,6 +110,8 @@ func _process(delta):
 	
 	
 #----------------------------------------------------
+#shooting
+	shootMissile()
 	if !Input.is_action_pressed("ui_accept"):
 		lock=false
 		bullets_left=weapon_automatic
@@ -123,10 +133,16 @@ func hit(dano):
 		life-=dano
 		invincible.start(1)
 		#fazer var depois
-		$ColorRect.color="ff0000"
+		self.modulate = Color(10,2,2,1)
 	
 
-	
+
+func shootMissile():
+	var b = missile_scene.instance()
+
+	#constructor(position,rotation,damage,size,vel,tgroup,side):
+	b.constructor(self.position,rotation,1,1,10,"Enemy",1)
+	get_parent().add_child(b)	
 
 func shoot():
 	var b = bullet_scene.instance()
@@ -141,7 +157,7 @@ func _on_Timer_timeout():
 
 
 func _on_invincible_timeout():
-	$ColorRect.color="f89c27"
+	self.modulate = Color(1,1,1,1)
 	
 #codigo para implementar na funcao de dano para tirar vida do player
 # if life >= 10

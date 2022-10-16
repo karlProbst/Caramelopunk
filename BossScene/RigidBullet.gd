@@ -2,8 +2,7 @@ extends RigidBody2D
 
 onready var target = get_node("../punk")
 
-
-
+onready var ray = get_node("RayCast2D")
 
 
 
@@ -33,16 +32,13 @@ func _integrate_forces(delta):
 	apply_central_impulse(Vector2(cos(angle), sin(angle)) * 30)
 	
 func _process(delta):
+	ray.force_raycast_update()
+	if ray.is_colliding() and ray.get_collider().is_in_group("Enemy"):
+		ray.get_collider().hit(60)
+		queue_free()
+		
 	
-	pass
-	
-func _on_Area2D_body_entered(body):
-	if body.is_in_group(group):
-		body.hit(damage)
 
 
-func _on_RigidBody2D_body_entered(body):
-	if body.is_in_group(group):
-		body.hit(damage)
 
 
