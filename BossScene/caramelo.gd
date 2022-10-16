@@ -21,6 +21,8 @@ var accel:=max_vel/3
 var bullet_scene = load("res://BossScene/Bullet.tscn")
 var missile_scene = load("res://BossScene/rigid_bullet.tscn")
 var scaley=scale.y
+var scalex=scale.x
+var rotationx=rotation
 #------------------------------------
 var lock = false
 var bullets_left = weapon_automatic
@@ -74,17 +76,28 @@ func _process(delta):
 		
 		#DIAGONAL
 		if Input.is_action_pressed("ui_right"):
+			scale.x=scalex
 			if vel.x<max_vel:
 				vel.x+=accel*2
-		if Input.is_action_pressed("ui_left"):
+		
+		elif Input.is_action_pressed("ui_left"):
+			
 			if vel.x>-max_vel:
 				vel.x-=accel*2
+			
 		if Input.is_action_pressed("ui_up"):
+			if(rotation>rotationx-0.35):
+				rotation-=0.5*delta
 			if vel.y>-max_vel:
 				vel.y-=accel*2
-		if Input.is_action_pressed("ui_down"):
+		elif Input.is_action_pressed("ui_down"):
+			if(rotation<rotationx+0.23):
+				rotation+=0.5*delta
+		
 			if vel.y<max_vel:
 				vel.y+=accel*2
+		else:
+			rotation=rotationx
 	else:
 		vel.y+=accel*1.2
 		
@@ -111,7 +124,7 @@ func _process(delta):
 	
 #----------------------------------------------------
 #shooting
-	shootMissile()
+	
 	if !Input.is_action_pressed("ui_accept"):
 		lock=false
 		bullets_left=weapon_automatic
@@ -121,6 +134,7 @@ func _process(delta):
 		#shoot()
 		if(bullets_left>0 and timer.time_left<=0.1):
 			shoot()
+			shootMissile()
 			bullets_left-=1
 			timer.start(weapon_rate)
 			
