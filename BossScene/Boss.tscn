@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://BossScene/caramelo.gd" type="Script" id=1]
 [ext_resource path="res://assets/coin/BIG_0000_Capa-1.png" type="Texture" id=2]
@@ -21,10 +21,10 @@
 [ext_resource path="res://assets/coin/BIG_0006_Capa-7.png" type="Texture" id=19]
 [ext_resource path="res://assets/life/muro.png" type="Texture" id=20]
 [ext_resource path="res://assets/sound/Musica_boss_pt.1.wav" type="AudioStream" id=21]
+[ext_resource path="res://assets/Boss/pai escroto.png" type="Texture" id=22]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 13.0
-height = 0.0
+[sub_resource type="CircleShape2D" id=14]
+radius = 18.9
 
 [sub_resource type="SpriteFrames" id=11]
 animations = [ {
@@ -58,12 +58,24 @@ radius = 36.2715
 [sub_resource type="ShaderMaterial" id=3]
 shader = SubResource( 2 )
 
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 121.555
+height = 258.24
+
 [sub_resource type="AnimationNodeStateMachine" id=8]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=9]
 
 [sub_resource type="Animation" id=10]
 resource_name = "boss_stage1"
+
+[sub_resource type="SpriteFrames" id=15]
+animations = [ {
+"frames": [ ExtResource( 22 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 4
@@ -98,6 +110,9 @@ texture = ExtResource( 20 )
 [node name="caramelo" type="KinematicBody2D" parent="." groups=["Player"]]
 position = Vector2( 164, 423 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Timer" type="Timer" parent="caramelo"]
 one_shot = true
@@ -111,14 +126,13 @@ one_shot = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="caramelo"]
 position = Vector2( 0, -22.5001 )
 rotation = 1.5708
-shape = SubResource( 1 )
+shape = SubResource( 14 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="caramelo"]
-position = Vector2( 1.25002, -23.75 )
+position = Vector2( 1.25002, -36.75 )
 scale = Vector2( 0.453629, 0.453629 )
 frames = SubResource( 11 )
 animation = "run"
-frame = 1
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="caramelo"]
@@ -132,6 +146,7 @@ rotation = -0.0855211
 position = Vector2( 118.125, 13.1251 )
 scale = Vector2( 0.897485, 0.897485 )
 frames = SubResource( 7 )
+frame = 5
 speed_scale = 3.0
 playing = true
 offset = Vector2( 23.5903, -0.479858 )
@@ -140,11 +155,19 @@ offset = Vector2( 23.5903, -0.479858 )
 position = Vector2( 138.047, 8.94437 )
 shape = SubResource( 13 )
 
+[node name="Sprite" type="Sprite" parent="caramelo"]
+position = Vector2( 0, -18 )
+scale = Vector2( 0.153063, 0.153063 )
+texture = ExtResource( 4 )
+
 [node name="punk" type="KinematicBody2D" parent="." groups=["Enemy"]]
 material = SubResource( 3 )
-position = Vector2( 708, 424 )
-scale = Vector2( -2, 2 )
+position = Vector2( 1541, 424 )
+scale = Vector2( 0.7, 0.7 )
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="ColorRect" type="ColorRect" parent="punk"]
 margin_left = -44.0
@@ -197,7 +220,6 @@ color = Color( 0, 0, 0, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="punk"]
 position = Vector2( -0.126221, -0.371582 )
-rotation = -1.54402
 shape = SubResource( 1 )
 
 [node name="rotator" type="Node2D" parent="punk"]
@@ -219,6 +241,9 @@ autostart = true
 
 [node name="Fire_timer" type="Timer" parent="punk"]
 
+[node name="AnimatedSprite" type="AnimatedSprite" parent="punk"]
+frames = SubResource( 15 )
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Coin" type="ColorRect" parent="CanvasLayer"]
@@ -233,7 +258,7 @@ script = ExtResource( 5 )
 position = Vector2( 21.5625, 29.1372 )
 scale = Vector2( 0.717988, 0.717988 )
 frames = SubResource( 7 )
-frame = 1
+frame = 6
 speed_scale = 3.0
 playing = true
 
