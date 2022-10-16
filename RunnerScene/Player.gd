@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+onready var anim = $AnimatedSprite
+
 var jumpspeed = 1650
 var fall_speed = 50
 var vel := Vector2()
@@ -36,14 +38,15 @@ func jump_input():
 
 	match state:
 		RUN:
-			self.scale.y = 1
+			anim.play("Run")
 		CROUCH:
-			self.scale.y = .5
+			anim.play("Crouch")
 		JUMP:
 			jump()
-			self.scale.y = 1
+			anim.play("Jumping")
 		FALLING:
 			vel.y += fall_speed
+			anim.play("Fall")
 
 	move_and_slide(vel,Vector2.UP)
 
