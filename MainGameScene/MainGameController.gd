@@ -17,7 +17,7 @@ onready var button_runner = $button_runner
 onready var button_gacha = $gacha
 onready var button_gacha_number = $gacha/Label2
 
-onready var stat_firerate_label = $stat_shield/label
+onready var stat_firerate_label = $stat_firerate/label
 onready var stat_projectile_label = $stat_projectile/label
 onready var stat_missile_label = $stat_missile/label
 onready var stat_shield_label = $stat_shield/label
@@ -40,7 +40,7 @@ var stat_missile_gacha=0
 
 var gacha_base_value=20
 var gacha_value=gacha_base_value
-var gacha_multiplier=.02
+var gacha_multiplier=.05
 var times_bought = 0
 var gacha_lock = false
 var rng = RandomNumberGenerator.new()
@@ -74,16 +74,17 @@ func _process(delta):
 		coins_count-=gacha_value
 		times_bought+=1
 		gacha_value=gacha_base_value*(1+gacha_multiplier*times_bought)
+		gacha_value=int(gacha_value)
 		button_gacha_number.text=str(gacha_value)
-		var rand = rng.randi_range(0,3)
+		var rand = rng.randi_range(1,4)
 		match rand:
-			0:
-				stat_firerate_gacha+=1	
 			1:
-				stat_shield_gacha+=1
+				stat_firerate_gacha+=1	
 			2:
-				stat_projectiles_gacha+=1
+				stat_shield_gacha+=1
 			3:
+				stat_projectiles_gacha+=1
+			4:
 				stat_missile_gacha+=1
 				
 		if stat_firerate_gacha>=3:	
