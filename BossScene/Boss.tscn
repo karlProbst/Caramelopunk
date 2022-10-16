@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://BossScene/caramelo.gd" type="Script" id=1]
 [ext_resource path="res://assets/coin/BIG_0000_Capa-1.png" type="Texture" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://assets/coin/BIG_0002_Capa-3.png" type="Texture" id=18]
 [ext_resource path="res://assets/coin/BIG_0006_Capa-7.png" type="Texture" id=19]
 [ext_resource path="res://assets/life/muro.png" type="Texture" id=20]
+[ext_resource path="res://assets/sound/Musica_boss_pt.1.wav" type="AudioStream" id=21]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 13.0
@@ -117,6 +118,7 @@ position = Vector2( 1.25002, -23.75 )
 scale = Vector2( 0.453629, 0.453629 )
 frames = SubResource( 11 )
 animation = "run"
+frame = 1
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="caramelo"]
@@ -130,7 +132,6 @@ rotation = -0.0855211
 position = Vector2( 118.125, 13.1251 )
 scale = Vector2( 0.897485, 0.897485 )
 frames = SubResource( 7 )
-frame = 6
 speed_scale = 3.0
 playing = true
 offset = Vector2( 23.5903, -0.479858 )
@@ -232,7 +233,7 @@ script = ExtResource( 5 )
 position = Vector2( 21.5625, 29.1372 )
 scale = Vector2( 0.717988, 0.717988 )
 frames = SubResource( 7 )
-frame = 7
+frame = 1
 speed_scale = 3.0
 playing = true
 
@@ -291,6 +292,10 @@ margin_top = 5.0
 margin_right = 1087.0
 margin_bottom = 40.0
 color = Color( 0.486275, 0, 0.054902, 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 21 )
+autoplay = true
 
 [connection signal="player_stats_changed" from="caramelo" to="CanvasLayer/Coin" method="_on_caramelo_player_stats_changed"]
 [connection signal="player_stats_changed" from="caramelo" to="CanvasLayer/Life" method="_on_caramelo_player_stats_changed"]
