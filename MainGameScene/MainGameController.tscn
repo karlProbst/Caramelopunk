@@ -161,6 +161,7 @@ margin_left = 225.0
 margin_top = 689.0
 margin_right = 508.0
 margin_bottom = 779.0
+action_mode = 0
 icon = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
@@ -197,7 +198,6 @@ __meta__ = {
 position = Vector2( 21.5625, 29.1372 )
 scale = Vector2( 0.717988, 0.717988 )
 frames = SubResource( 1 )
-frame = 2
 speed_scale = 3.0
 playing = true
 

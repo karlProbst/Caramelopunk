@@ -10,7 +10,7 @@ var runner_level
 
 var loaded_scene = null
 
-var coins_count := 0
+var coins_count := 1000
 onready var counter_coins = $Coin/Label
 onready var button_boss = $button_boss
 onready var button_runner = $button_runner
@@ -42,7 +42,7 @@ var gacha_base_value=20
 var gacha_value=gacha_base_value
 var gacha_multiplier=.02
 var times_bought = 0
-
+var gacha_lock = false
 var rng = RandomNumberGenerator.new()
 func _ready():
 	rng.randomize()
@@ -68,8 +68,9 @@ func _process(delta):
 		runner_level = runner_scene.instance()
 		add_child(runner_level)
 		loaded_scene = runner_level
-		
-	if (button_gacha.is_pressed() and coins_count>gacha_value):
+	if (!button_gacha.is_pressed()):
+		gacha_lock=false
+	if (button_gacha.is_pressed() and coins_count>gacha_value and !gacha_lock):
 		coins_count-=gacha_value
 		times_bought+=1
 		gacha_value=gacha_base_value*(1+gacha_multiplier*times_bought)
@@ -107,4 +108,5 @@ func _process(delta):
 		stat_projectile_gacha_label.text = str(stat_projectiles_gacha)
 		stat_missile_gacha_label.text = str(stat_missile_gacha)
 		stat_shield_gacha_label.text = str(stat_shield_gacha)
-
+		#gambiarra pra butotn released
+		gacha_lock=true
