@@ -1,9 +1,24 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://BossScene/Bullet.gd" type="Script" id=1]
+[ext_resource path="res://assets/Boss/tiro fraco 1.png" type="Texture" id=2]
+[ext_resource path="res://assets/life/heart pixel art 254x254.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 5.0
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "caramelo",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "punk",
+"speed": 5.0
+} ]
 
 [node name="Area2D" type="Area2D" groups=["Projeteis"]]
 script = ExtResource( 1 )
@@ -14,10 +29,16 @@ shape = SubResource( 1 )
 [node name="bullet" type="Node2D" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="bullet"]
+visible = false
 margin_left = -5.0
 margin_top = -5.0
 margin_right = 5.0
 margin_bottom = 5.0
 color = Color( 1, 0.960784, 0, 1 )
+
+[node name="Sprite" type="AnimatedSprite" parent="bullet"]
+scale = Vector2( 0.159631, 0.159631 )
+frames = SubResource( 2 )
+animation = "punk"
 
 [connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
