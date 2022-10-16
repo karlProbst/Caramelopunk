@@ -10,11 +10,12 @@ onready var front_tile_04 = $FrontTile_04
 onready var front_tile_05 = $FrontTile_05
 
 onready var obstacle_instance = load("res://RunnerScene/Obstacles/Obstacle.tscn")
+onready var coin_instance = load("res://RunnerScene/Collectable/Collectable.tscn")
 
 var vel := 10.0
 
-var obstacle_spawn_timer = 0 #Counter based on the tiles to spawn obstacles... including enemies
-var coin_spawn_timer = 0
+var obstacle_spawn_timer = 5 #Counter based on the tiles to spawn obstacles... including enemies
+var coin_spawn_timer = 3
 
 
 var rng = RandomNumberGenerator.new()
@@ -41,7 +42,7 @@ func front_tile_controller():
 			coin_spawn_timer += 1
 			if obstacle_spawn_timer >= 5:
 				obstacle_spawner()
-			if obstacle_spawn_timer >= 6:
+			if coin_spawn_timer >= 6:
 				coin_spawner()
 			print(obstacle_spawn_timer)
 
@@ -49,11 +50,13 @@ func back_tile_controller():
 	pass
 
 func coin_spawner():
-	pass
+	var coin = coin_instance.instance()
+	coin.position = Vector2(2400,400)
+	self.add_child(coin)
+	coin_spawn_timer = 0
 
 func obstacle_spawner():
 	var obstacle = obstacle_instance.instance()
-	obstacle.position = Vector2(2400,666)
+	obstacle.position = Vector2(2400,840)
 	self.add_child(obstacle)
-	print(obstacle)
 	obstacle_spawn_timer = 0

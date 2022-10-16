@@ -52,3 +52,6 @@ func crouch():
 func jump():
 	vel.y = 0
 	vel.y -= jumpspeed
+
+func _interact():
+	pass

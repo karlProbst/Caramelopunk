@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Caramelopunk"
-run/main_scene="res://BossScene/Boss.tscn"
+run/main_scene="res://MainGameScene/MainGameController.tscn"
 config/icon="res://icon.png"
 
 [display]

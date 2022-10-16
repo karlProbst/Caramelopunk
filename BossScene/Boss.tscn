@@ -258,4 +258,3 @@ frames = SubResource( 5 )
 [connection signal="timeout" from="caramelo/Timer" to="caramelo" method="_on_Timer_timeout"]
 [connection signal="timeout" from="caramelo/invincible" to="caramelo" method="_on_Timer_timeout"]
 [connection signal="timeout" from="caramelo/invincible" to="caramelo" method="_on_invincible_timeout"]
-[connection signal="player_stats_changed" from="punk" to="CanvasLayer2/BossLife" method="_on_punk_player_stats_changed"]
