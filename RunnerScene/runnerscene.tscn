@@ -2,9 +2,9 @@
 
 [ext_resource path="res://RunnerScene/enemy_spawn.gd" type="Script" id=1]
 [ext_resource path="res://assets/dog/correno2.png" type="Texture" id=2]
-[ext_resource path="res://RunnerScene/Tiles/IMG_1086.png" type="Texture" id=3]
-[ext_resource path="res://RunnerScene/Tiles/IMG_1087.png" type="Texture" id=4]
-[ext_resource path="res://RunnerScene/Tiles/IMG_1084.png" type="Texture" id=5]
+[ext_resource path="res://RunnerScene/Tiles/IMG_1092.png" type="Texture" id=3]
+[ext_resource path="res://RunnerScene/Tiles/IMG_1091.png" type="Texture" id=4]
+[ext_resource path="res://RunnerScene/Tiles/IMG_1093.png" type="Texture" id=5]
 [ext_resource path="res://RunnerScene/Player.gd" type="Script" id=6]
 [ext_resource path="res://assets/dog/correno1.png" type="Texture" id=7]
 [ext_resource path="res://assets/dog/Rebaixado.png" type="Texture" id=8]
@@ -12,7 +12,7 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0

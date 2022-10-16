@@ -61,9 +61,13 @@ func session_spawner(session_number, x_offset):
 	session.position = Vector2(1920+x_offset,0)
 	self.add_child(session)
 	session_spawn_timer = 0
+	if vel <= 18:
+		vel += 0.25
+	print(vel)
 
 
 func obstacle_spawner():
 	var obstacle = obstacle_instance.instance()
 	obstacle.position = Vector2(2400,840)
 	self.add_child(obstacle)
+

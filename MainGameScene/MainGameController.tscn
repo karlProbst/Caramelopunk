@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://MainGameScene/MainGameController.gd" type="Script" id=1]
 [ext_resource path="res://assets/coin/BIG_0007_Capa-8.png" type="Texture" id=2]
@@ -10,6 +10,19 @@
 [ext_resource path="res://assets/coin/BIG_0005_Capa-6.png" type="Texture" id=8]
 [ext_resource path="res://assets/coin/BIG_0002_Capa-3.png" type="Texture" id=9]
 [ext_resource path="res://assets/coin/BIG_0006_Capa-7.png" type="Texture" id=10]
+[ext_resource path="res://assets/dynamicfont.tres" type="DynamicFont" id=11]
+[ext_resource path="res://assets/coolvetica/coolvetica crammed rg.otf" type="DynamicFontData" id=12]
+[ext_resource path="res://assets/icones/icone olinho.png" type="Texture" id=13]
+[ext_resource path="res://assets/icones/icone kokoro.png" type="Texture" id=14]
+[ext_resource path="res://assets/icones/icone coleira.png" type="Texture" id=15]
+[ext_resource path="res://assets/icones/icone lambida.png" type="Texture" id=16]
+[ext_resource path="res://assets/Boss/pai escroto.png" type="Texture" id=17]
+[ext_resource path="res://assets/dog/correno1.png" type="Texture" id=18]
+
+[sub_resource type="DynamicFont" id=2]
+size = 42
+extra_spacing_bottom = -19
+font_data = ExtResource( 12 )
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -34,74 +47,86 @@ margin_bottom = 869.0
 color = Color( 0.486275, 0.486275, 0.486275, 1 )
 
 [node name="button_boss" type="Button" parent="."]
-margin_left = 1602.0
-margin_top = 902.0
-margin_right = 1813.0
-margin_bottom = 992.0
-icon = ExtResource( 2 )
+margin_left = 1440.0
+margin_top = 755.0
+margin_right = 1638.0
+margin_bottom = 883.0
+rect_scale = Vector2( 1.72031, 1.72031 )
+icon = ExtResource( 17 )
+expand_icon = true
 
 [node name="Label" type="Label" parent="button_boss"]
-margin_left = 127.0
-margin_top = 37.0
-margin_right = 167.0
-margin_bottom = 51.0
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -93.3677
+margin_top = 1.74387
+margin_right = -31.3677
+margin_bottom = 107.744
+custom_fonts/font = ExtResource( 11 )
 text = "Boss"
 
 [node name="button_runner" type="Button" parent="."]
-margin_left = 1608.0
+margin_left = 1409.0
 margin_top = 310.0
-margin_right = 1811.0
+margin_right = 1656.0
 margin_bottom = 400.0
-icon = ExtResource( 2 )
+rect_scale = Vector2( 1.59182, 1.59182 )
+icon = ExtResource( 18 )
+icon_align = 2
+expand_icon = true
 
 [node name="Label2" type="Label" parent="button_runner"]
-margin_left = 117.0
-margin_top = 40.0
-margin_right = 157.0
-margin_bottom = 54.0
+margin_left = 16.3336
+margin_top = -15.0771
+margin_right = 108.334
+margin_bottom = 90.9229
+custom_fonts/font = ExtResource( 11 )
 text = "Runner"
 
 [node name="gacha" type="Button" parent="."]
-margin_left = 750.0
-margin_top = 205.0
-margin_right = 953.0
-margin_bottom = 403.0
+margin_left = 764.0
+margin_top = 143.0
+margin_right = 967.0
+margin_bottom = 341.0
+rect_scale = Vector2( 1.50593, 1.50593 )
 icon = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Label2" type="Label" parent="gacha"]
-margin_left = 117.0
+margin_left = 103.0
 margin_top = 40.0
-margin_right = 157.0
-margin_bottom = 54.0
-text = "Gacha
-"
+margin_right = 180.0
+margin_bottom = 146.0
+custom_fonts/font = ExtResource( 11 )
+text = "Gacha"
 
 [node name="stat_firerate" type="Button" parent="."]
 margin_left = 223.0
 margin_top = 234.0
 margin_right = 512.0
 margin_bottom = 324.0
-icon = ExtResource( 2 )
+icon = ExtResource( 13 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="label" type="Label" parent="stat_firerate"]
-margin_left = 117.0
-margin_top = 40.0
-margin_right = 157.0
-margin_bottom = 54.0
+margin_left = 122.0
+margin_top = -8.0
+margin_right = 232.0
+margin_bottom = 207.0
+custom_fonts/font = ExtResource( 11 )
 text = "fire rate
 "
 
 [node name="gacha" type="Label" parent="stat_firerate"]
-margin_left = 230.0
-margin_top = 40.0
-margin_right = 280.0
-margin_bottom = 71.0
+margin_left = 281.0
+margin_top = 12.0
+margin_right = 331.0
+margin_bottom = 118.0
+custom_fonts/font = ExtResource( 11 )
 text = "0"
 
 [node name="stat_shield" type="Button" parent="."]
@@ -109,24 +134,26 @@ margin_left = 227.0
 margin_top = 387.0
 margin_right = 512.0
 margin_bottom = 477.0
-icon = ExtResource( 2 )
+icon = ExtResource( 15 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="label" type="Label" parent="stat_shield"]
-margin_left = 117.0
-margin_top = 40.0
-margin_right = 157.0
-margin_bottom = 54.0
+margin_left = 116.0
+margin_top = -12.0
+margin_right = 193.0
+margin_bottom = 203.0
+custom_fonts/font = ExtResource( 11 )
 text = "shield
 "
 
 [node name="gacha" type="Label" parent="stat_shield"]
-margin_left = 229.0
-margin_top = 40.0
-margin_right = 269.0
-margin_bottom = 71.0
+margin_left = 276.0
+margin_top = 15.0
+margin_right = 316.0
+margin_bottom = 121.0
+custom_fonts/font = ExtResource( 11 )
 text = "0"
 
 [node name="stat_projectile" type="Button" parent="."]
@@ -134,27 +161,27 @@ margin_left = 226.0
 margin_top = 538.0
 margin_right = 510.0
 margin_bottom = 628.0
-icon = ExtResource( 2 )
+icon = ExtResource( 14 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="label" type="Label" parent="stat_projectile"]
-margin_left = 117.0
-margin_top = 40.0
-margin_right = 157.0
-margin_bottom = 54.0
-text = "number of projectiles
-"
+margin_left = 120.0
+margin_top = 3.0
+margin_right = 400.0
+margin_bottom = 218.0
+custom_fonts/font = SubResource( 2 )
+text = "number of
+projectiles"
 
 [node name="gacha" type="Label" parent="stat_projectile"]
-margin_left = 240.0
-margin_top = 66.0
-margin_right = 378.0
-margin_bottom = 114.0
-text = "0
-
-"
+margin_left = 274.0
+margin_top = 14.0
+margin_right = 412.0
+margin_bottom = 338.0
+custom_fonts/font = ExtResource( 11 )
+text = "0"
 
 [node name="stat_missile" type="Button" parent="."]
 margin_left = 225.0
@@ -162,24 +189,26 @@ margin_top = 689.0
 margin_right = 508.0
 margin_bottom = 779.0
 action_mode = 0
-icon = ExtResource( 2 )
+icon = ExtResource( 16 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="label" type="Label" parent="stat_missile"]
-margin_left = 117.0
-margin_top = 40.0
-margin_right = 157.0
-margin_bottom = 54.0
+margin_left = 120.0
+margin_top = -15.0
+margin_right = 211.0
+margin_bottom = 200.0
+custom_fonts/font = ExtResource( 11 )
 text = "missile
 "
 
 [node name="gacha" type="Label" parent="stat_missile"]
-margin_left = 233.0
-margin_top = 64.0
-margin_right = 280.0
-margin_bottom = 95.0
+margin_left = 275.0
+margin_top = 13.0
+margin_right = 322.0
+margin_bottom = 228.0
+custom_fonts/font = ExtResource( 11 )
 text = "0
 "
 
@@ -202,10 +231,11 @@ speed_scale = 3.0
 playing = true
 
 [node name="Label" type="Label" parent="Coin"]
-margin_left = 62.0
-margin_top = 20.0
-margin_right = 102.0
-margin_bottom = 34.0
+margin_left = 64.0
+margin_top = -29.0
+margin_right = 111.0
+margin_bottom = 77.0
+custom_fonts/font = ExtResource( 11 )
 text = "200"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
