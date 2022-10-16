@@ -6,7 +6,7 @@ onready var ray = get_node("RayCast2D")
 
 
 
-var damage := 10
+var damage := 1
 var size := 10
 var vel = 10
 var group ="Enemy"
@@ -34,7 +34,7 @@ func _integrate_forces(delta):
 func _process(delta):
 	ray.force_raycast_update()
 	if ray.is_colliding() and ray.get_collider().is_in_group("Enemy"):
-		ray.get_collider().hit(60)
+		ray.get_collider().hit(damage)
 		queue_free()
 		
 	

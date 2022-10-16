@@ -8,6 +8,8 @@ var coin:=200
 var max_coin:=200.0
 var coin_recovery:=1.0
 
+var stat_dmg = 0
+
 signal player_stats_changed
 
 #se for zero a municao e infinita
@@ -55,7 +57,7 @@ func _process(delta):
 	if new_coin != coin:
 		coin = new_coin
 		emit_signal("player_stats_changed", self)
-		print(coin)
+		
 		
 	var new_life = min(life + life_recovery * delta, max_life)
 	if new_life != life:
@@ -161,14 +163,14 @@ func shootMissile():
 	var b = missile_scene.instance()
 
 	#constructor(position,rotation,damage,size,vel,tgroup,side):
-	b.constructor(self.position,rotation,1,1,10,"Enemy",1)
+	b.constructor(self.position,rotation,1+stat_dmg,1,10,"Enemy",1)
 	get_parent().add_child(b)	
 
 func shoot():
 	var b = bullet_scene.instance()
 
 	#constructor(position,rotation,damage,size,vel,tgroup,side):
-	b.constructor(self.position,rotation,1,4,10,"Enemy",1)
+	b.constructor(self.position,rotation,1+stat_dmg,4,10,"Enemy",1)
 	get_parent().add_child(b)
 
 

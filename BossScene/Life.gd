@@ -6,6 +6,8 @@ onready var h2 = $CanvasLayer/Life/h2
 onready var h3 = $CanvasLayer/Life/h3
 onready var caramelo = $caramelo
 onready var coin_counter = $CanvasLayer/Coin/Label
+onready var bar = $CanvasLayer2/BossLife/bar
+onready var boss = $punk
 onready var death_index = $death
 onready var death = $death/Death
 onready var death_message = $death/Message
@@ -17,13 +19,15 @@ func _ready():
 
 
 func _physics_process(delta):
-	
+	if(boss.life<=0):
+		get_tree().root.get_child(0).death()
+				
+	bar.rect_size.x = 1085 * boss.life / boss.max_life
 	coin_counter.text = str(caramelo.coin)
 	match(caramelo.life):
 		0:
 			if(color2>5):
 				get_tree().root.get_child(0).death()
-				print("fuck")
 			color-=delta
 			color2+=delta
 			death_index.z_index=10

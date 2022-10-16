@@ -14,6 +14,13 @@ var coins_count := 0
 onready var button_boss = $button_boss
 onready var button_runner = $button_runner
 
+#STATS
+var stat_firerate=0
+var stat_shield=0
+var stat_projectiles=0
+var stat_missile=0
+
+
 func _ready():
 	pass
 	
@@ -28,12 +35,12 @@ func _process(delta):
 		loaded_scene.queue_free()
 		loaded_scene = null
 	
-	elif (Input.is_action_pressed("ui_up") or button_boss.is_pressed()) && loaded_scene == null:
+	elif (button_boss.is_pressed()) && loaded_scene == null:
 		boss_level = boss_scene.instance()
 		add_child(boss_level)
 		loaded_scene = boss_level
 		
-	elif (Input.is_action_pressed("ui_down") or button_runner.is_pressed()) && loaded_scene == null:
+	elif (button_runner.is_pressed()) && loaded_scene == null:
 		runner_level = runner_scene.instance()
 		add_child(runner_level)
 		loaded_scene = runner_level

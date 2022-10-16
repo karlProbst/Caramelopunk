@@ -17,4 +17,5 @@ func _ready():
 
 
 func _on_punk_player_stats_changed(var camareloPunk):
+	print(camareloPunk.life)
 	$bar.rect_size.x = 78 * camareloPunk.life / camareloPunk.max_life
