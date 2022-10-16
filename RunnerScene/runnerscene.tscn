@@ -27,7 +27,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 103, 76 )
+extents = Vector2( 965.5, 76 )
 
 [node name="Runner" type="Node2D"]
 script = ExtResource( 1 )
@@ -78,4 +78,5 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2( 647.5, 0 )
 shape = SubResource( 4 )
