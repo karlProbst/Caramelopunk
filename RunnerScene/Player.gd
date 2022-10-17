@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 onready var anim = $AnimatedSprite
 onready var col = $CollisionShape2D
+onready var audio_get_coin = $Audiogetcoin
 
 var jumpspeed = 1650
 var fall_speed = 50
@@ -62,5 +63,5 @@ func jump():
 	vel.y = 0
 	vel.y -= jumpspeed
 
-func _interact():
-	pass
+func play_coin_sound():
+	audio_get_coin.play()

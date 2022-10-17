@@ -16,6 +16,7 @@ func _process(delta):
 
 
 func _on_Collectable_body_entered(body):
-	if body.has_method("_interact"):
+	if body.has_method("play_coin_sound"):
 		get_tree().root.get_child(0).coins_count += 1
+		body.play_coin_sound()
 		queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://RunnerScene/enemy_spawn.gd" type="Script" id=1]
 [ext_resource path="res://assets/dog/correno2.png" type="Texture" id=2]
@@ -15,6 +15,8 @@
 [ext_resource path="res://assets/Moeda e Coracao/moeda4.png" type="Texture" id=13]
 [ext_resource path="res://assets/Moeda e Coracao/moeda3.png" type="Texture" id=14]
 [ext_resource path="res://assets/dynamicfont.tres" type="DynamicFont" id=15]
+[ext_resource path="res://assets/sound/coins runner.wav" type="AudioStream" id=16]
+[ext_resource path="res://assets/sound/Musica runner pt.1.wav" type="AudioStream" id=17]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -105,6 +107,10 @@ frames = SubResource( 3 )
 animation = "Jumping"
 playing = true
 
+[node name="Audiogetcoin" type="AudioStreamPlayer" parent="Player_runner"]
+stream = ExtResource( 16 )
+volume_db = -20.546
+
 [node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2( 317, 972 )
 __meta__ = {
@@ -128,6 +134,7 @@ script = ExtResource( 11 )
 position = Vector2( 21, 33 )
 scale = Vector2( 0.717988, 0.717988 )
 frames = SubResource( 5 )
+frame = 1
 speed_scale = 1.5
 playing = true
 
@@ -138,3 +145,7 @@ margin_right = 107.0
 margin_bottom = 82.0
 custom_fonts/font = ExtResource( 15 )
 text = "200"
+
+[node name="Audiomusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 17 )
+autoplay = true

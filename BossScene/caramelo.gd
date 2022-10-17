@@ -40,6 +40,7 @@ onready var timer=$Timer
 onready var timer2=$Timer2
 onready var invincible=$invincible
 onready var shield = $shield
+onready var audio_hit = $Audiohit
 var vel:=Vector2.ZERO
 
 
@@ -210,6 +211,7 @@ func _process(delta):
 	
 func hit(dano):
 	if(invincible.time_left<=0.1):
+		audio_hit.play()
 		life-=dano
 		invincible.start(1)
 		#fazer var depois

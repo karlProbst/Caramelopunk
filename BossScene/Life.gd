@@ -11,7 +11,7 @@ onready var boss = $punk
 onready var death_index = $death
 onready var death = $death/Death
 onready var death_message = $death/Message
-
+onready var audio_boss_death = $Audiodeath
 
 var color = 1
 var color2 = 0
@@ -23,7 +23,7 @@ func _ready():
 func _physics_process(delta):
 	if(boss.life<=0):
 		get_tree().root.get_child(0).death()
-				
+		audio_boss_death.play()
 	bar.rect_size.x = 1085 * boss.life / boss.max_life
 	
 	match(caramelo.life):

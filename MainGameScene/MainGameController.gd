@@ -11,7 +11,9 @@ var runner_level
 var loaded_scene = null
 
 var coins_count := 1000
+
 onready var counter_coins = $Coin/Label
+onready var audio_gacha_coin = $Audiocoin
 onready var button_boss = $button_boss
 onready var button_runner = $button_runner
 onready var button_gacha = $gacha
@@ -71,6 +73,7 @@ func _process(delta):
 	if (!button_gacha.is_pressed()):
 		gacha_lock=false
 	if (button_gacha.is_pressed() and coins_count>gacha_value and !gacha_lock):
+		audio_gacha_coin.play()
 		coins_count-=gacha_value
 		times_bought+=1
 		gacha_value=gacha_base_value*(1+gacha_multiplier*times_bought)
