@@ -25,7 +25,7 @@ func _physics_process(delta):
 		get_tree().root.get_child(0).death()
 				
 	bar.rect_size.x = 1085 * boss.life / boss.max_life
-	coin_counter.text = str(caramelo.coin)
+	
 	match(caramelo.life):
 		0:
 			if(color2>5):

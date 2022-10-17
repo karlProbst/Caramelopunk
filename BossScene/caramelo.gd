@@ -59,7 +59,9 @@ func _ready():
 func _process(delta):
 	match stat_shield:
 		0:
-			pass
+			shield.scale.y=0.2
+			shield.scale.x=0.2
+			shield.rotation+=delta*2
 		1:
 			shield.scale.y=0.7
 			shield.scale.x=0.7

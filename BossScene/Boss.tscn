@@ -1,10 +1,8 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://BossScene/caramelo.gd" type="Script" id=1]
-[ext_resource path="res://assets/coin/BIG_0000_Capa-1.png" type="Texture" id=2]
 [ext_resource path="res://BossScene/punk.gd" type="Script" id=3]
 [ext_resource path="res://assets/life/heart pixel art 254x254.png" type="Texture" id=4]
-[ext_resource path="res://scripts/Coin.gd" type="Script" id=5]
 [ext_resource path="res://BossScene/Life.gd" type="Script" id=6]
 [ext_resource path="res://BossScene/follow.gd" type="Script" id=7]
 [ext_resource path="res://icon.png" type="Texture" id=8]
@@ -12,13 +10,6 @@
 [ext_resource path="res://assets/dog/correno2.png" type="Texture" id=10]
 [ext_resource path="res://assets/dog/correno1.png" type="Texture" id=11]
 [ext_resource path="res://scripts/BossLife.gd" type="Script" id=12]
-[ext_resource path="res://assets/coin/BIG_0004_Capa-5.png" type="Texture" id=13]
-[ext_resource path="res://assets/coin/BIG_0007_Capa-8.png" type="Texture" id=14]
-[ext_resource path="res://assets/coin/BIG_0001_Capa-2.png" type="Texture" id=15]
-[ext_resource path="res://assets/coin/BIG_0003_Capa-4.png" type="Texture" id=16]
-[ext_resource path="res://assets/coin/BIG_0005_Capa-6.png" type="Texture" id=17]
-[ext_resource path="res://assets/coin/BIG_0002_Capa-3.png" type="Texture" id=18]
-[ext_resource path="res://assets/coin/BIG_0006_Capa-7.png" type="Texture" id=19]
 [ext_resource path="res://assets/life/muro.png" type="Texture" id=20]
 [ext_resource path="res://assets/sound/Musica_boss_pt.1.wav" type="AudioStream" id=21]
 [ext_resource path="res://assets/Boss/pai escroto.png" type="Texture" id=22]
@@ -26,6 +17,7 @@
 [ext_resource path="res://assets/Moeda e Coracao/moeda2.png" type="Texture" id=24]
 [ext_resource path="res://assets/Moeda e Coracao/moeda4.png" type="Texture" id=25]
 [ext_resource path="res://assets/Moeda e Coracao/moeda3.png" type="Texture" id=26]
+[ext_resource path="res://assets/Moeda e Coracao/kokoro1.png" type="Texture" id=27]
 
 [sub_resource type="CircleShape2D" id=14]
 radius = 18.9
@@ -81,22 +73,9 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=7]
-animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 15 ), ExtResource( 18 ), ExtResource( 16 ), ExtResource( 13 ), ExtResource( 17 ), ExtResource( 19 ), ExtResource( 14 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
-[sub_resource type="AtlasTexture" id=4]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 250, 250 )
-
 [sub_resource type="SpriteFrames" id=5]
 animations = [ {
-"frames": [ SubResource( 4 ) ],
+"frames": [ ExtResource( 27 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -158,7 +137,7 @@ rotation = -0.0855211
 position = Vector2( 118.125, 13.1251 )
 scale = Vector2( 0.897485, 0.897485 )
 frames = SubResource( 16 )
-frame = 3
+frame = 2
 speed_scale = 3.0
 playing = true
 offset = Vector2( 23.5903, -0.479858 )
@@ -258,29 +237,6 @@ frames = SubResource( 15 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Coin" type="ColorRect" parent="CanvasLayer"]
-margin_left = 21.0
-margin_top = 75.0
-margin_right = 142.0
-margin_bottom = 134.0
-color = Color( 0, 0, 0, 0 )
-script = ExtResource( 5 )
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="CanvasLayer/Coin"]
-position = Vector2( 21.5625, 29.1372 )
-scale = Vector2( 0.717988, 0.717988 )
-frames = SubResource( 7 )
-frame = 7
-speed_scale = 3.0
-playing = true
-
-[node name="Label" type="Label" parent="CanvasLayer/Coin"]
-margin_left = 62.0
-margin_top = 20.0
-margin_right = 102.0
-margin_bottom = 34.0
-text = "200"
-
 [node name="Life" type="HBoxContainer" parent="CanvasLayer"]
 anchor_left = 0.005
 anchor_top = 0.005
@@ -290,18 +246,18 @@ margin_right = 58.998
 margin_bottom = 16.0
 
 [node name="h1" type="AnimatedSprite" parent="CanvasLayer/Life"]
-position = Vector2( 31.65, 31.85 )
-scale = Vector2( 0.25, 0.25 )
+position = Vector2( 33.4, 41.6 )
+scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 5 )
 
 [node name="h2" type="AnimatedSprite" parent="CanvasLayer/Life"]
-position = Vector2( 100.4, 34.6 )
-scale = Vector2( 0.25, 0.25 )
+position = Vector2( 91.2, 41.4 )
+scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 5 )
 
 [node name="h3" type="AnimatedSprite" parent="CanvasLayer/Life"]
-position = Vector2( 172.4, 35.6 )
-scale = Vector2( 0.25, 0.25 )
+position = Vector2( 146.4, 41.6 )
+scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 5 )
 
 [node name="Node2D" type="RigidBody2D" parent="."]
@@ -334,7 +290,6 @@ color = Color( 0.486275, 0, 0.054902, 1 )
 stream = ExtResource( 21 )
 autoplay = true
 
-[connection signal="player_stats_changed" from="caramelo" to="CanvasLayer/Coin" method="_on_caramelo_player_stats_changed"]
 [connection signal="player_stats_changed" from="caramelo" to="CanvasLayer/Life" method="_on_caramelo_player_stats_changed"]
 [connection signal="timeout" from="caramelo/Timer" to="caramelo" method="_on_Timer_timeout"]
 [connection signal="timeout" from="caramelo/Timer2" to="caramelo" method="_on_Timer2_timeout"]
