@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://MainGameScene/MainGameController.gd" type="Script" id=1]
 [ext_resource path="res://assets/Moeda e Coracao/moeda2.png" type="Texture" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://assets/icones/icone lambida.png" type="Texture" id=16]
 [ext_resource path="res://assets/Boss/pai escroto.png" type="Texture" id=17]
 [ext_resource path="res://assets/dog/correno1.png" type="Texture" id=18]
+[ext_resource path="res://assets/dog/dog base.png" type="Texture" id=19]
 
 [sub_resource type="AnimatedTexture" id=3]
 flags = 4
@@ -43,8 +44,13 @@ position = Vector2( 954, 268 )
 scale = Vector2( 1.78109, 1.78109 )
 texture = ExtResource( 10 )
 
+[node name="DogBase" type="Sprite" parent="FundoBoss"]
+position = Vector2( -100.5, 185.841 )
+scale = Vector2( 0.634125, 0.634125 )
+texture = ExtResource( 19 )
+
 [node name="NegocinhoDeBolas" type="Sprite" parent="."]
-position = Vector2( 709, 561 )
+position = Vector2( 1100, 457 )
 scale = Vector2( 0.800001, 1 )
 texture = ExtResource( 9 )
 
@@ -54,18 +60,18 @@ margin_right = 1925.0
 margin_bottom = 1084.0
 
 [node name="ColorRect2" type="ColorRect" parent="."]
-margin_left = 139.0
-margin_top = 60.0
-margin_right = 751.0
-margin_bottom = 869.0
+margin_left = 49.0
+margin_top = 71.0
+margin_right = 661.0
+margin_bottom = 880.0
 rect_scale = Vector2( 0.800001, 1 )
 color = Color( 0.486275, 0.486275, 0.486275, 0.592157 )
 
 [node name="button_boss" type="Button" parent="."]
-margin_left = 1086.0
-margin_top = 779.0
-margin_right = 1284.0
-margin_bottom = 907.0
+margin_left = 1514.0
+margin_top = 834.0
+margin_right = 1712.0
+margin_bottom = 962.0
 rect_scale = Vector2( 1.72031, 1.72031 )
 icon = ExtResource( 17 )
 expand_icon = true
@@ -81,10 +87,10 @@ custom_fonts/font = ExtResource( 11 )
 text = "Boss"
 
 [node name="button_runner" type="Button" parent="."]
-margin_left = 1256.0
-margin_top = 274.0
-margin_right = 1503.0
-margin_bottom = 364.0
+margin_left = 1023.0
+margin_top = 894.0
+margin_right = 1270.0
+margin_bottom = 984.0
 rect_scale = Vector2( 1.59182, 1.59182 )
 icon = ExtResource( 18 )
 icon_align = 2
@@ -99,10 +105,10 @@ custom_fonts/font = ExtResource( 11 )
 text = "Runner"
 
 [node name="gacha" type="Button" parent="."]
-margin_left = 809.0
-margin_top = 322.0
-margin_right = 1012.0
-margin_bottom = 520.0
+margin_left = 884.0
+margin_top = 320.0
+margin_right = 1087.0
+margin_bottom = 518.0
 rect_scale = Vector2( 1.37163, 1.37163 )
 rect_pivot_offset = Vector2( 582.519, 570.125 )
 icon = SubResource( 3 )
@@ -131,10 +137,10 @@ custom_fonts/font = ExtResource( 11 )
 text = "Gacha"
 
 [node name="stat_firerate" type="Button" parent="."]
-margin_left = 223.0
-margin_top = 234.0
-margin_right = 512.0
-margin_bottom = 324.0
+margin_left = 133.0
+margin_top = 245.0
+margin_right = 422.0
+margin_bottom = 343.0
 icon = ExtResource( 13 )
 __meta__ = {
 "_edit_group_": true
@@ -168,10 +174,10 @@ custom_fonts/font = ExtResource( 11 )
 text = "0"
 
 [node name="stat_shield" type="Button" parent="."]
-margin_left = 227.0
-margin_top = 387.0
-margin_right = 512.0
-margin_bottom = 477.0
+margin_left = 137.0
+margin_top = 398.0
+margin_right = 422.0
+margin_bottom = 496.0
 icon = ExtResource( 15 )
 __meta__ = {
 "_edit_group_": true
@@ -206,10 +212,10 @@ custom_fonts/font = ExtResource( 11 )
 text = "0"
 
 [node name="stat_projectile" type="Button" parent="."]
-margin_left = 226.0
-margin_top = 538.0
-margin_right = 510.0
-margin_bottom = 628.0
+margin_left = 136.0
+margin_top = 549.0
+margin_right = 420.0
+margin_bottom = 647.0
 icon = ExtResource( 14 )
 __meta__ = {
 "_edit_group_": true
@@ -244,10 +250,10 @@ custom_fonts/font = ExtResource( 11 )
 text = "0"
 
 [node name="stat_missile" type="Button" parent="."]
-margin_left = 225.0
-margin_top = 689.0
-margin_right = 508.0
-margin_bottom = 779.0
+margin_left = 135.0
+margin_top = 700.0
+margin_right = 418.0
+margin_bottom = 798.0
 action_mode = 0
 icon = ExtResource( 16 )
 __meta__ = {
@@ -284,10 +290,10 @@ text = "0
 "
 
 [node name="Coin" type="ColorRect" parent="."]
-margin_left = 229.0
-margin_top = 111.0
-margin_right = 492.0
-margin_bottom = 170.0
+margin_left = 139.0
+margin_top = 122.0
+margin_right = 402.0
+margin_bottom = 181.0
 color = Color( 0, 0, 0, 0 )
 script = ExtResource( 5 )
 __meta__ = {
@@ -298,6 +304,7 @@ __meta__ = {
 position = Vector2( 22, 27 )
 scale = Vector2( 0.717988, 0.717988 )
 frames = ExtResource( 7 )
+frame = 1
 speed_scale = 1.5
 playing = true
 
