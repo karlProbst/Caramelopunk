@@ -60,32 +60,32 @@ func _ready():
 func _process(delta):
 	match stat_shield:
 		0:
-			shield.scale.y=0.2
-			shield.scale.x=0.2
-			shield.rotation+=delta*2
-		1:
-			shield.scale.y=0.7
-			shield.scale.x=0.7
-			shield.rotation+=delta*3
-		2:
 			shield.scale.y=1
 			shield.scale.x=1
+			shield.rotation+=delta*1
+		1:
+			shield.scale.y=1.1
+			shield.scale.x=1.1
+			shield.rotation+=delta*2
+		2:
+			shield.scale.y=1.15
+			shield.scale.x=1.15
 			shield.rotation+=delta*3
 		3:
 			shield.scale.y=1.2
 			shield.scale.x=1.2
 			shield.rotation+=delta*3.5
 		4:
-			shield.scale.y=1.5
-			shield.scale.x=1.5
+			shield.scale.y=1.25
+			shield.scale.x=1.25
 			shield.rotation+=delta*4
 		5:
-			shield.scale.y=1.6
-			shield.scale.x=1.6
+			shield.scale.y=1.3
+			shield.scale.x=1.3
 			shield.rotation+=delta*4.1
 		6:
-			shield.scale.y=1.2
-			shield.scale.x=1.2
+			shield.scale.y=1.4
+			shield.scale.x=1.4
 			shield.rotation+=delta*4.2
 	
 	var new_coin = min(coin + coin_recovery * delta, max_coin)

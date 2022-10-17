@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://BossScene/caramelo.gd" type="Script" id=1]
 [ext_resource path="res://assets/sound/Death.wav" type="AudioStream" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://assets/dog/correno2.png" type="Texture" id=10]
 [ext_resource path="res://assets/dog/correno1.png" type="Texture" id=11]
 [ext_resource path="res://scripts/BossLife.gd" type="Script" id=12]
+[ext_resource path="res://assets/rua.png" type="Texture" id=13]
 [ext_resource path="res://assets/life/muro.png" type="Texture" id=20]
 [ext_resource path="res://assets/sound/Musica_boss_pt.1.wav" type="AudioStream" id=21]
 [ext_resource path="res://assets/Boss/pai escroto.png" type="Texture" id=22]
@@ -88,11 +89,11 @@ script = ExtResource( 6 )
 
 [node name="death" type="Node2D" parent="."]
 
-[node name="Death" type="ColorRect" parent="death"]
-margin_top = 1.0
-margin_right = 1916.0
-margin_bottom = 1075.0
-color = Color( 0.329412, 0.956863, 0.941176, 1 )
+[node name="Death" type="Sprite" parent="death"]
+modulate = Color( 0.270588, 0.270588, 0.270588, 1 )
+position = Vector2( 947, 523 )
+scale = Vector2( 1.01078, 1.04417 )
+texture = ExtResource( 13 )
 
 [node name="Message" type="Sprite" parent="death"]
 modulate = Color( 1, 1, 1, 0 )
@@ -126,7 +127,6 @@ position = Vector2( 1.25002, -36.75 )
 scale = Vector2( 0.453629, 0.453629 )
 frames = SubResource( 11 )
 animation = "run"
-frame = 1
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="caramelo"]
@@ -140,7 +140,7 @@ rotation = -0.0855211
 position = Vector2( 118.125, 13.1251 )
 scale = Vector2( 0.897485, 0.897485 )
 frames = SubResource( 16 )
-frame = 1
+frame = 2
 speed_scale = 3.0
 playing = true
 offset = Vector2( 23.5903, -0.479858 )

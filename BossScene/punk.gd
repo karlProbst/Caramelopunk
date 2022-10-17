@@ -31,6 +31,8 @@ func _ready():
 
 
 func _process(delta):
+	
+		
 	if(life<max_life/1.5 and lock==0):
 		vel=300
 	if(life<max_life/2 and lock==0):

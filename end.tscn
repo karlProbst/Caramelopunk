@@ -1,0 +1,101 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/dynamicfont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/coolvetica/coolvetica rg.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/dog/correno1.png" type="Texture" id=3]
+[ext_resource path="res://MainGameScene/intro.gd" type="Script" id=4]
+[ext_resource path="res://assets/dog/correno2.png" type="Texture" id=5]
+
+[sub_resource type="AnimatedTexture" id=1]
+flags = 4
+frames = 2
+frame_0/texture = ExtResource( 3 )
+frame_1/texture = ExtResource( 5 )
+frame_1/delay_sec = 0.0
+
+[sub_resource type="DynamicFont" id=2]
+size = 60
+outline_color = Color( 0.54902, 0.117647, 0.117647, 1 )
+extra_spacing_bottom = -19
+font_data = ExtResource( 2 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Intro" type="Area2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="Intro"]
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="ColorRect" type="ColorRect" parent="Intro"]
+margin_left = -13.0
+margin_top = -10.0
+margin_right = 1967.0
+margin_bottom = 1126.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="button_begin" type="Button" parent="Intro"]
+margin_left = 1453.0
+margin_top = 894.0
+margin_right = 1700.0
+margin_bottom = 984.0
+rect_scale = Vector2( 1.59182, 1.59182 )
+icon = SubResource( 1 )
+align = 0
+icon_align = 2
+expand_icon = true
+
+[node name="Label2" type="Label" parent="Intro/button_begin"]
+margin_left = 16.3336
+margin_top = -15.0771
+margin_right = 108.334
+margin_bottom = 90.9229
+custom_fonts/font = ExtResource( 1 )
+text = "Jogar!
+"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Intro"]
+margin_left = 244.0
+margin_top = 121.0
+margin_right = 1668.0
+margin_bottom = 824.0
+custom_fonts/normal_font = SubResource( 2 )
+text = "Ajude o Vira-lata Caramelo a encontrar um novo lar!
+
+Cansado dos perigos das ruas, nosso doguinho caramelo atravessará diversos obstáculos, enfrentará inimigos e precisará usar todo seu charme e malandragem para garantir sua adoção.
+
+Venha desfrutar dessa jornada tipicamente brasileira, repleta de gráficos charmosos e referências ao cotidiano urbano nacional e apaixone-se você também pelo legendário Vira-lata Caramelo.
+
+Como jogar: 
+
+- Segure a barra de espaço para abaixar e desviar de obstáculos;
+
+- Pressione/solte a barra de espaço para pular;
+
+- Colete Moedas durante as corridas para comprar upgrades;
+
+- Fortaleça sua fofura e amor para convencer o  mala do Beto a te adotar;
+
+Encontro com Beto:
+
+- Utilize as setas para se movimentar e desviar dos projéteis;
+
+-Colete Energia com seu escudo absorvendo os projéteis do Beto;
+
+- Pressione barra de espaço para executar comandos especiais durante o embate com o Chefão; 
+
+Nomes nos créditos:
+
+Gilberto Mayworm Neto - Game Pruducer/Programmer
+Karl Probst - Lead Programmer
+Larissa Botelho - Programmer
+Gabriel Borjoize - Character Arts/ UI Arts
+Jade Becker - Background Arts/ Objects Arts
+Yure Alves - Music/ Sound Design
+Léo Lyra - QA/ Pitch Producer
+
+Scooby - Modelo
+
+Game Design elaborado por geral
+"

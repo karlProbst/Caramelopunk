@@ -3,6 +3,7 @@ extends Node2D
 # In this script, "global" variables will be stored
 
 onready var boss_scene = load("res://BossScene/Boss.tscn")
+onready var ending = load("res://end.tscn")
 onready var runner_scene = load ("res://RunnerScene/runnerscene.tscn")
 
 var boss_level
@@ -10,7 +11,7 @@ var runner_level
 
 var loaded_scene = null
 
-var coins_count := 1000
+var coins_count := 0
 
 onready var counter_coins = $Coin/Label
 onready var audio_gacha_coin = $Audiocoin
@@ -53,7 +54,11 @@ func _ready():
 func death():
 	loaded_scene.queue_free()
 	loaded_scene = null
-	
+func win():
+	ending = ending.instance()
+	add_child(ending)
+	loaded_scene = ending
+	coins_count+=1000
 func _process(delta):
 	
 	counter_coins.text=str(coins_count)

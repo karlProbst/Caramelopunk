@@ -22,7 +22,7 @@ func _ready():
 
 func _physics_process(delta):
 	if(boss.life<=0):
-		get_tree().root.get_child(0).death()
+		get_tree().root.get_child(0).win()
 		audio_boss_death.play()
 	bar.rect_size.x = 1085 * boss.life / boss.max_life
 	
